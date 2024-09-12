@@ -1,11 +1,11 @@
 window.CONFIG = {
-  crawl: `Thanks to all the contributors of this project. While it's not completely finished, the community effort has made this possible. Stars, contributions, and feedback are welcome and appreciated. Thanks for trying out this emulator.`,
-  greeting: 'This is your weather',
+  crawl: `Kmart News Network brought to you by The Weather Channel!`,
+  greeting: 'Kmart News Network Weather',
   language: 'en-US', // Supported in TWC API
   countryCode: 'US', // Supported in TWC API (for postal key)
   units: 'e', // Supported in TWC API (e = English (imperial), m = Metric, h = Hybrid (UK)),
   unitField: 'imperial', // Supported in TWC API. This field will be filled in automatically. (imperial = e, metric = m, uk_hybrid = h)
-  loop: false,
+  loop: true,
   secrets: {
     // Possibly deprecated key: See issue #29
     // twcAPIKey: 'd522aa97197fd864d36b418f39ebb323'
