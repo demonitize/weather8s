@@ -5,7 +5,7 @@ window.CONFIG = {
   countryCode: 'US', // Supported in TWC API (for postal key)
   units: 'e', // Supported in TWC API (e = English (imperial), m = Metric, h = Hybrid (UK)),
   unitField: 'imperial', // Supported in TWC API. This field will be filled in automatically. (imperial = e, metric = m, uk_hybrid = h)
-  loop: true,
+  loop: false,
   secrets: {
     // Possibly deprecated key: See issue #29
     // twcAPIKey: 'd522aa97197fd864d36b418f39ebb323'
