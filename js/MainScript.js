@@ -92,13 +92,14 @@ function setInformation(){
 }
 
 function setMainBackground(){
-  getElement('background-image').style.backgroundImage = 'url(https://i.imgur.com/kbcB9As.jpeg';
+  getElement('background-image').style.backgroundImage = 'url(https://i.imgur.com/F25Xbv3.jpeg';
 }
 
 function checkStormMusic(){
-  let rxshit = new RegExp(/Hurricane|Tornado|Flood|Cyclone|Tsunami/i);
+  let rxshit = new RegExp(/Hurricane|Tornado|Flood|Cyclone|Tsunami|Severe/i);
   if(currentCondition.toLowerCase().includes("storm") || rxshit.test(alerts)){
     music= new Audio("assets/music/storm.wav");
+    getElement('background-image').style.backgroundImage = 'url(https://i.imgur.com/qifw2Se.jpeg)';
   }
 }
 
