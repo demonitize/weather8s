@@ -96,7 +96,8 @@ function setMainBackground(){
 }
 
 function checkStormMusic(){
-  if(currentCondition.toLowerCase().includes("storm") || currentCondition.toLowerCase().includes("heavy")){
+  let rxshit = new RegExp(/Hurricane|Tornado|Flood|Cyclone|Tsunami/i);
+  if(currentCondition.toLowerCase().includes("storm") || rxshit.test(alerts)){
     music= new Audio("assets/music/storm.wav");
   }
 }
