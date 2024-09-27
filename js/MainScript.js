@@ -96,7 +96,7 @@ function setMainBackground(){
 }
 
 function checkStormMusic(){
-  if(currentCondition.toLowerCase().includes("storm")){
+  if(currentCondition.toLowerCase().includes("storm") || currentCondition.toLowerCase().includes("heavy")){
     music= new Audio("assets/music/storm.wav");
   }
 }
