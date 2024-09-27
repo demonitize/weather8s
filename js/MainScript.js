@@ -13,6 +13,9 @@ var currentLogo;
 var currentLogoIndex = 0;
 var pageOrder;
 var music;
+var bgd = "assets/backgrounds/TWC_Kmart.png";
+var bgdRed = "https://i.imgur.com/qifw2Se.jpeg";
+var bgdSubRed = "https://i.imgur.com/HP5NCFW.jpeg";
 
 window.onload = function() {
   CONFIG.addOption('zip-code', 'ZIP Code', '00000')
@@ -49,6 +52,10 @@ function preLoadMusic(){
   // Sets a random track to play
   var index = Math.floor(Math.random() * 11) + 1;
   music = new Audio("assets/music/" + index + ".wav");
+
+  bgd = CONFIG.mainBackgrounds[selectRandomArray(CONFIG.mainBackgrounds)];
+  bgdRed = CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.redModeBackgrounds)];
+  bgdSubRed = CONFIG.subRedModeBackgrounds[selectRandomArray(CONFIG.subRedModeBackgrounds)];
 }
 
 /* Set the timeline page order depending on time of day and if
@@ -91,21 +98,29 @@ function setInformation(){
   setTimeout(startAnimation, 1000);
 }
 
+function selectRandomArray(arr) {
+  return Math.floor(Math.random() * arr.length) - 1;
+}
 function setMainBackground(){
-  getElement('background-image').style.backgroundImage = 'url(https://i.imgur.com/F25Xbv3.jpeg';
+  getElement('background-image').style.backgroundImage = `url(${bgd})`;
 }
 
 function checkStormMusic(){
-  let rxshit = new RegExp(/Hurricane|Tornado|Flood|Cyclone|Tsunami|Severe/i);
-  if(currentCondition.toLowerCase().includes("storm") || rxshit.test(alerts)){
+  let majorStorm = new RegExp(/Hurricane|Tornado|Flood|Tsunami/i);
+  let minorStorm = new RegExp(/Test|Severe|Thunder|Cyclone|Heat|Freeze|Wind/i);
+  if(currentCondition.toLowerCase().includes("storm") || majorStorm.test(alerts)){
     music= new Audio("assets/music/storm.wav");
-    getElement('background-image').style.backgroundImage = 'url(https://i.imgur.com/qifw2Se.jpeg)';
+    getElement('background-image').style.backgroundImage = `url(${bgdRed})`;
+  } else if (minorStorm.test(alerts)) {
+    music = new Audio("assets/music/MinorStormAlert.wav");
+    getElement('background-image').style.backgroundImage = `url(${bgdSubRed})`;
   }
 }
 
 function startAnimation(){
   setInitialPositionCurrentPage();
-
+  music.volume = 0.5;
+  jingle.volume = 0.5;
   jingle.play();
   setTimeout(startMusic, 5000)
   executeGreetingPage();

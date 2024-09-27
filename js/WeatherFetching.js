@@ -130,7 +130,7 @@ function fetchCurrentWeather(){
           .then(function(response) {
             if (response.status !== 200) {
               console.log("conditions request error");
-              return;
+                return;
             }
             response.json().then(function(data) {
               // cityName is set in the above fetch call and not this one
@@ -157,22 +157,45 @@ function fetchCurrentWeather(){
 
 function fetchRadarImages(){
   // Skip radar until replaced with some other solution (wunderground api dead)
-  scheduleTimeline();
-  return;
+  // scheduleTimeline();
+  // return;
 
-  radarImage = new Image();
-  radarImage.onerror = function () {
-    getElement('radar-container').style.display = 'none';
-  }
-  radarImage.src = `https://api.wunderground.com/api/${CONFIG.secrets.wundergroundAPIKey}/animatedradar/q/MI/${zipCode}.gif?newmaps=1&timelabel=1&timelabel.y=10&num=5&delay=10&radius=100&num=15&width=1235&height=525&rainsnow=1&smoothing=1&noclutter=1`;
 
-  if(alertsActive){
-    zoomedRadarImage = new Image();
-    zoomedRadarImage.onerror = function () {
-      getElement('zoomed-radar-container').style.display = 'none';
+  fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${latitude}%2C${longitude}?unitGroup=us&key=${CONFIG.secrets.radarAPIKey}&contentType=json`, {
+    "method": "GET",
+    "headers": {
     }
-    zoomedRadarImage.src = `https://api.wunderground.com/api/${CONFIG.secrets.wundergroundAPIKey}/animatedradar/q/MI/${zipCode}.gif?newmaps=1&timelabel=1&timelabel.y=10&num=5&delay=10&radius=50&num=15&width=1235&height=525&rainsnow=1&smoothing=1&noclutter=1`;
-  }
+    })
+    .then(async response => {
+      let JASON = await response.json();
+      await JASON.days[0].stations.forEach((radarStation) => {
+        let validRadars = ["KDIX","KSJT","KLOT","KFTG","KEYX","KBUF","KDFX","KGRK","KSGF","KHGX","KSRX","KCAE","KAMX","KCCX","KDDC","KVBX","KBBX","KCBW","KMLB","KMBX","RKSG","KGRB","KDMX","KEVX","KESX","KOTX","KRIW","KGWX","KIWX","KGGW","KVNX","KPOE","KFFC","KSHV","KVAX","KLRX","KCXX","KBIS","KHNX","KLWX","KOAX","KFCX","KCRP","KMAF","KCLE","KFDR","KPDT","KDGX","KTWX","KBGM","KATX","PABC","KMTX","KCBX","KUEX","KCLX","KLVX","KPUX","KLSX","KNKX","KVWX","KMSX","KFDX","KNQA","KLZK","KLCH","PAIH","KMKX","PAKC","KILN","PHWA","KEWX","KTYX","KLNX","KLBB","PAEC","KHPX","KRGX","KMAX","KICT","KDTX","KHDX","KMOB","PHKM","KMRX","KUDX","KCYS","KVTX","KMHX","KHDC","KGJX","KBYX","KAPX","KARX","KMUX","KDLH","KDOX","RKJK","PAPD","KSOX","KGSP","KBLX","KTFX","TJUA","PGUA","KMXX","KJKL","KJGX","KBOX","KAMA","RODN","KABR","KHTX","KIND","KTLH","KDVN","KMVX","KBHX","KJAX","KGRR","KFSD","KMQT","KLTX","PHKI","KRAX","PACG","KINX","KEMX","KGYX","KIWA","KRLX","KEAX","PAHG","KSFX","KTBW","KEOX","KABX","KTLX","KRTX","PHMO","KICX","KBRO","KAKQ","KBMX","KYUX","KGLD","KDAX","KENX","KFWS","KOHX","KEPZ","KDYX","KFSX","KPBZ","KMPX","KOKX","KILX","KPAH","KLGX"];
+      console.log(radarStation);
+      if (validRadars.includes(radarStation)) {
+        
+        document.getElementsByClassName("broken-radar-text")[0].style.display = "none";
+        document.getElementsByClassName("broken-radar-text")[1].style.display = "none";
+        radarImage = new Image();
+        radarImage.onerror = function () {
+          getElement('radar-container').style.display = 'none';
+        }
+        radarImage.src = `https://radar.weather.gov/ridge/standard/base_velocity/${radarStation}_loop.gif`;
+        getElement("radar-container").style["textAlign"] = "center";
+        if(alertsActive){
+          zoomedRadarImage = new Image();
+          zoomedRadarImage.onerror = function () {
+            getElement('zoomed-radar-container').style.display = 'none';
+          }
+          zoomedRadarImage.src = `https://radar.weather.gov/ridge/standard/${radarStation}_loop.gif`;
+          getElement("zoomed-radar-container").style["textAlign"] = "center";
+        }
+      }
+    });
+  })
+  .catch(err => {
+    console.error(err);
+  });
+
 
   scheduleTimeline();
 }

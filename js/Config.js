@@ -1,5 +1,5 @@
 window.CONFIG = {
-  crawl: `Kmart News Network brought to you by The Weather Channel!`,
+  crawl: `Kmart News Network brought to you by The Weather Channel! Also did you know that this is a looping text box? I didn't and now I have to keep typing stuff here to make it look fuller than it actually is. Uh- So what's up with airplane food? Not funny, ok then well did you know that VRChat is adding cool shit in their beta? Well they are! Anyways I ran out of ideas so bye bye!`,
   greeting: 'Kmart News Network Weather',
   language: 'en-US', // Supported in TWC API
   countryCode: 'US', // Supported in TWC API (for postal key)
@@ -9,8 +9,44 @@ window.CONFIG = {
   secrets: {
     // Possibly deprecated key: See issue #29
     // twcAPIKey: 'd522aa97197fd864d36b418f39ebb323'
-    twcAPIKey: '71f92ea9dd2f4790b92ea9dd2f779061'
+    twcAPIKey: '71f92ea9dd2f4790b92ea9dd2f779061',
+    radarAPIKey: 'V2X2KYG9LLRKQL65NJEEFLURE' 
+    /* I KNOW THIS IS A BAD IDEA. If you're going to spam my API keys, please don't. <3*/
   },
+
+  mainBackgrounds: [
+    "assets/backgrounds/TWC_Kmart.png",
+    "https://i.imgur.com/V41pDkt.jpeg",
+    "https://i.imgur.com/U5rQOJD.jpeg",
+    "https://i.imgur.com/F25Xbv3.jpeg",
+    "https://i.imgur.com/uDZEzSf.jpeg",
+    "https://i.imgur.com/J2W7c7i.jpeg",
+    /* Winter Backgrounds */
+    // "https://i.imgur.com/unlTvYM.jpeg",
+    // "https://i.imgur.com/o6qkm3S.jpeg",
+    // "https://i.imgur.com/oryJwKg.jpeg",
+    // "https://i.imgur.com/YIe8scl.jpeg",
+    // "https://i.imgur.com/w223SHG.jpeg"
+
+  ],
+  redModeBackgrounds: [
+    "https://i.imgur.com/qifw2Se.jpeg",
+    "https://i.imgur.com/mvc9y58.jpeg",
+    "https://i.imgur.com/EvPe49F.jpeg",
+    "https://i.imgur.com/eGZ4EtJ.jpeg"
+  ],
+  subRedModeBackgrounds: [
+    "https://i.imgur.com/HP5NCFW.jpeg",
+    "https://i.imgur.com/cbQPlEP.jpeg",
+    "https://i.imgur.com/oZFV8ew.jpeg",
+    "https://i.imgur.com/zI68plR.jpeg"
+  ],
+  hurricaneBackgrounds: [
+    "https://i.imgur.com/QEGOx35.jpeg"
+  ],
+  winterStormBackgrounds: [
+    "https://i.imgur.com/gSNIkl0.jpeg"
+  ],
 
   // Config Functions (index.html settings manager)
   options: [],
