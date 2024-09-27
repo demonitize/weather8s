@@ -47,7 +47,7 @@ function toggleAdvancedSettings(){
 
 function preLoadMusic(){
   // Sets a random track to play
-  var index = Math.floor(Math.random() * 15) + 1;
+  var index = Math.floor(Math.random() * 11) + 1;
   music = new Audio("assets/music/" + index + ".wav");
 }
 
