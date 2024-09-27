@@ -56,6 +56,11 @@ function preLoadMusic(){
   bgd = CONFIG.mainBackgrounds[selectRandomArray(CONFIG.mainBackgrounds)];
   bgdRed = CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.redModeBackgrounds)];
   bgdSubRed = CONFIG.subRedModeBackgrounds[selectRandomArray(CONFIG.subRedModeBackgrounds)];
+
+  if (bgd == undefined || bgdRed == undefined || bgdSubRed == undefined) {
+    console.log("Failed to select a background, rerolling");
+    preLoadMusic();
+  }
 }
 
 /* Set the timeline page order depending on time of day and if
