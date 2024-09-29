@@ -5,22 +5,22 @@ const SINGLE = [{name: "Alert", subpages: [{name: "single-alert-page", duration:
 const MULTIPLE = [{name: "Alerts", subpages: [{name: "multiple-alerts-page", duration: 7000}]},{name: "Now", subpages: [{name: "current-page", duration: 8000}, {name: "radar-page", duration: 8000}, {name: "zoomed-radar-page", duration: 8000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000}, {name: "7day-page", duration: 13000}]},]
 const WEEKDAY = ["SUN",  "MON", "TUES", "WED", "THU", "FRI", "SAT"];
 
-const jingle = new Audio("assets/music/jingle.wav")
+const jingle = new Audio("assets/music/jingle.wav");
 const crawlSpeed = 150;
 
 var isDay = true;
 var currentLogo;
 var currentLogoIndex = 0;
 var pageOrder;
-var music;
+var music = new Audio("assets/music/WX_Branding_Short.wav");
 var bgd = "assets/backgrounds/TWC_Kmart.png";
 var bgdRed = "https://i.imgur.com/qifw2Se.jpeg";
 var bgdSubRed = "https://i.imgur.com/HP5NCFW.jpeg";
 
 window.onload = function() {
-  CONFIG.addOption('zip-code', 'ZIP Code', '00000')
-  CONFIG.addOption('crawlText', 'Crawl Text', 'Text that scrolls along the bottom')
-  CONFIG.addOption('greetingText', 'Greeting Text', 'Message (or joke) that appears at the start')
+  CONFIG.addOption('zip-code', 'ZIP Code', '00000');
+  CONFIG.addOption('crawlText', 'Crawl Text', 'Text that scrolls along the bottom');
+  CONFIG.addOption('greetingText', 'Greeting Text', 'Message (or joke) that appears at the start');
   CONFIG.load();
   preLoadMusic();
   setMainBackground();
@@ -33,32 +33,30 @@ window.onload = function() {
 }
 
 function toggleAdvancedSettings(){
-  let advancedSettingsOptions = getElement('advanced-settings-options')
-  let advancedOptionsText = getElement('advanced-options-text')
+  let advancedSettingsOptions = getElement('advanced-settings-options');
+  let advancedOptionsText = getElement('advanced-options-text');
 
-  var advancedSettingsHidden = advancedSettingsOptions.classList.contains('hidden')
+  var advancedSettingsHidden = advancedSettingsOptions.classList.contains('hidden');
 
   if(advancedSettingsHidden){
-    advancedSettingsOptions.classList.remove('hidden')
-    advancedOptionsText.innerHTML = 'Hide advanced options'
+    advancedSettingsOptions.classList.remove('hidden');
+    advancedOptionsText.innerHTML = 'Hide advanced options';
   }
   else{
-    advancedSettingsOptions.classList.add('hidden')
-    advancedOptionsText.innerHTML = 'Show advanced options'
+    advancedSettingsOptions.classList.add('hidden');
+    advancedOptionsText.innerHTML = 'Show advanced options';
   }
 }
 
 function preLoadMusic(){
   // Sets a random track to play
-  var index = Math.floor(Math.random() * 11) + 1;
-  music = new Audio("assets/music/" + index + ".wav");
-
+  music = new Audio(CONFIG.musicTracks[selectRandomArray(CONFIG.musicTracks)]);
   bgd = CONFIG.mainBackgrounds[selectRandomArray(CONFIG.mainBackgrounds)];
   bgdRed = CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.redModeBackgrounds)];
   bgdSubRed = CONFIG.subRedModeBackgrounds[selectRandomArray(CONFIG.subRedModeBackgrounds)];
 
-  if (bgd == undefined || bgdRed == undefined || bgdSubRed == undefined) {
-    console.log("Failed to select a background, rerolling");
+  if (bgd == undefined || bgdRed == undefined || bgdSubRed == undefined || music == undefined) {
+    console.log("Failed to select one or more random assets, rerolling");
     preLoadMusic();
   }
 }
@@ -114,7 +112,7 @@ function checkStormMusic(){
   let majorStorm = new RegExp(/Hurricane|Tornado|Flood|Tsunami/i);
   let minorStorm = new RegExp(/Test|Severe|Thunder|Cyclone|Heat|Freeze|Wind/i);
   if(currentCondition.toLowerCase().includes("storm") || majorStorm.test(alerts)){
-    music= new Audio("assets/music/storm.wav");
+    music = new Audio("assets/music/storm.wav");
     getElement('background-image').style.backgroundImage = `url(${bgdRed})`;
   } else if (minorStorm.test(alerts)) {
     music = new Audio("assets/music/MinorStormAlert.wav");
@@ -127,7 +125,7 @@ function startAnimation(){
   music.volume = 0.5;
   jingle.volume = 0.5;
   jingle.play();
-  setTimeout(startMusic, 5000)
+  setTimeout(startMusic, 5000);
   executeGreetingPage();
 }
 
@@ -188,7 +186,7 @@ function executePage(pageIndex, subPageIndex){
   var currentPage = pageOrder[pageIndex];
   var currentSubPageName = currentPage.subpages[subPageIndex].name;
   var currentSubPageElement = getElement(currentSubPageName);
-  var subPageCount = currentPage.subpages.length
+  var subPageCount = currentPage.subpages.length;
   var currentSubPageDuration = currentPage.subpages[subPageIndex].duration;
 
   if(subPageIndex === 0){
@@ -241,7 +239,7 @@ function clearPage(pageIndex, subPageIndex){
   var currentPage = pageOrder[pageIndex];
   var currentSubPageName = currentPage.subpages[subPageIndex].name;
   var currentSubPageElement = getElement(currentSubPageName);
-  var subPageCount = currentPage.subpages.length
+  var subPageCount = currentPage.subpages.length;
   var currentSubPageDuration = currentPage.subpages[subPageIndex].duration;
 
   var isNewPage = subPageCount-1 == subPageIndex;
@@ -367,7 +365,7 @@ function clearEnd(){
 }
 
 function reloadPage(){
-  location.reload()
+  location.reload();
 }
 
 function loadInfoBar(){

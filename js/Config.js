@@ -13,7 +13,20 @@ window.CONFIG = {
     radarAPIKey: 'V2X2KYG9LLRKQL65NJEEFLURE' 
     /* I KNOW THIS IS A BAD IDEA. If you're going to spam my API keys, please don't. <3*/
   },
-
+  musicTracks: [
+    "assets/music/WX_AMHQ_1.wav",
+    "assets/music/WX_AMHQ_2.wav",
+    "assets/music/WX_Tomorrows_Sunrise.wav",
+    "assets/music/WX_Branding_Short.wav",
+    "assets/music/WX_Clouds_May_Come.wav",
+    "assets/music/WX_Song_6.wav",
+    "assets/music/WX_Song_7.wav",
+    "assets/music/WX_Song_11.wav",
+    "assets/music/WX_Wake_Up_With_Al_1.wav",
+    "assets/music/WX_Wake_Up_With_Al_2.wav",
+    "assets/music/WX_Weekend_Recharge_1.wav",
+    "assets/music/WX_Weekend_Recharge_2.wav",
+  ],
   mainBackgrounds: [
     "assets/backgrounds/TWC_Kmart.png",
     "https://i.imgur.com/V41pDkt.jpeg",
@@ -33,19 +46,19 @@ window.CONFIG = {
     "https://i.imgur.com/qifw2Se.jpeg",
     "https://i.imgur.com/mvc9y58.jpeg",
     "https://i.imgur.com/EvPe49F.jpeg",
-    "https://i.imgur.com/eGZ4EtJ.jpeg"
+    "https://i.imgur.com/eGZ4EtJ.jpeg",
   ],
   subRedModeBackgrounds: [
     "https://i.imgur.com/HP5NCFW.jpeg",
     "https://i.imgur.com/cbQPlEP.jpeg",
     "https://i.imgur.com/oZFV8ew.jpeg",
-    "https://i.imgur.com/zI68plR.jpeg"
+    "https://i.imgur.com/zI68plR.jpeg",
   ],
   hurricaneBackgrounds: [
-    "https://i.imgur.com/QEGOx35.jpeg"
+    "https://i.imgur.com/QEGOx35.jpeg",
   ],
   winterStormBackgrounds: [
-    "https://i.imgur.com/gSNIkl0.jpeg"
+    "https://i.imgur.com/gSNIkl0.jpeg",
   ],
 
   // Config Functions (index.html settings manager)
