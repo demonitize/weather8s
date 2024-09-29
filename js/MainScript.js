@@ -8,6 +8,13 @@ const WEEKDAY = ["SUN",  "MON", "TUES", "WED", "THU", "FRI", "SAT"];
 const jingle = new Audio("assets/music/jingle.wav");
 const crawlSpeed = 150;
 
+/* var musicV2 = new Gapless5({
+  tracks: ['assets/music/WX_Branding_Short.wav'],
+  loop: false,
+  loadLimit: 1,
+  // mapKeys: {prev: 'a', playpause: 's', stop: 'd', next: 'f'},
+}); */
+
 var isDay = true;
 var currentLogo;
 var currentLogoIndex = 0;
@@ -49,7 +56,8 @@ function toggleAdvancedSettings(){
 }
 
 function preLoadMusic(){
-  // Sets a random track to play
+  /* Sets a random track to play */
+  // musicV2.replaceTrack(0, CONFIG.musicTracks[selectRandomArray(CONFIG.musicTracks)]);
   music = new Audio(CONFIG.musicTracks[selectRandomArray(CONFIG.musicTracks)]);
   bgd = CONFIG.mainBackgrounds[selectRandomArray(CONFIG.mainBackgrounds)];
   bgdRed = CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.redModeBackgrounds)];
@@ -109,19 +117,22 @@ function setMainBackground(){
 }
 
 function checkStormMusic(){
-  let majorStorm = new RegExp(/Hurricane|Tornado|Flood|Tsunami/i);
+  let majorStorm = new RegExp(/Hurricane|Tornado|Flood|Tsunami|Evacuation/i);
   let minorStorm = new RegExp(/Test|Severe|Thunder|Cyclone|Heat|Freeze|Wind/i);
   if(currentCondition.toLowerCase().includes("storm") || majorStorm.test(alerts)){
     music = new Audio("assets/music/storm.wav");
+    // musicV2.replaceTrack(0, "assets/music/storm.wav");
     getElement('background-image').style.backgroundImage = `url(${bgdRed})`;
   } else if (minorStorm.test(alerts)) {
     music = new Audio("assets/music/MinorStormAlert.wav");
+    // musicV2.replaceTrack(0, "assets/music/MinorStormAlert.wav");
     getElement('background-image').style.backgroundImage = `url(${bgdSubRed})`;
   }
 }
 
 function startAnimation(){
   setInitialPositionCurrentPage();
+  // musicV2.setVolume(0.5);
   music.volume = 0.5;
   jingle.volume = 0.5;
   jingle.play();
@@ -131,6 +142,7 @@ function startAnimation(){
 
 function startMusic(){
   music.play();
+  // musicV2.play();
 }
 
 function hideSettings(){
