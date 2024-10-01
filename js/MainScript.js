@@ -35,7 +35,8 @@ window.onload = function() {
   setMainBackground();
   resizeWindow();
   setClockTime();
-  if (!CONFIG.loop) {
+  checkStandbyMode();
+  if (!CONFIG.loop && !CONFIG.standbyMode) {
     getElement("settings-container").style.display = 'block';
     guessZipCode();
   }
@@ -108,6 +109,7 @@ function setInformation(){
   setCurrentConditions();
   setTimelineEvents();
   hideSettings();
+  checkStandbyMode();
   setTimeout(startAnimation, 1000);
 }
 
@@ -119,7 +121,7 @@ function setMainBackground(){
 }
 
 function checkStormMusic(){
-  let majorStorm = new RegExp(/Hurricane|Tornado|Flood|Tsunami|Evacuation/i);
+  let majorStorm = new RegExp(/Hurricane|Tornado|Flood|Tsunami|Evacuation|Blizzard/i);
   let minorStorm = new RegExp(/Test|Severe|Thunder|Cyclone|Heat|Freeze|Wind/i);
   if(currentCondition.toLowerCase().includes("storm") || majorStorm.test(alerts)){
     music = new Audio("assets/music/storm.wav");
@@ -136,7 +138,8 @@ function startAnimation(){
   setInitialPositionCurrentPage();
   // musicV2.setVolume(0.5);
   music.volume = 0.5;
-  jingle.volume = 0.5;
+  jingle.volume = 0.25;
+  voice.volume = 0.5;
   jingle.play();
   setTimeout(startMusic, 5000);
   executeGreetingPage();
@@ -229,13 +232,13 @@ function executePage(pageIndex, subPageIndex){
   }
 
   var isLastPage = pageIndex >= pageOrder.length-1 && subPageIndex >= pageOrder[pageOrder.length-1].subpages.length-1;
-  if(isLastPage)
+  if(isLastPage && !CONFIG.standbyMode)
     setTimeout(hideCrawl, 2000);
 
 
   if(currentSubPageName == "current-page"){
     setTimeout(loadCC, 1000);
-    setTimeout(playCurrentConditionsVoice(currentTemperature), 1000);
+    setTimeout(playCurrentConditionsVoice(currentTemperature), 2500);
     setTimeout(scrollCC, currentSubPageDuration / 2);
     animateValue('cc-temperature-text', -50, currentTemperature, 2500, 1);
     animateDialFill('cc-dial-color', currentTemperature, 2500);
@@ -383,6 +386,12 @@ function clearPage(pageIndex, subPageIndex){
   }
 
   if(isLastPage){
+    if (CONFIG.standbyMode) {
+      // clearPage();
+      currentSubPageElement.style.transitionDelay = '0s';
+      currentSubPageElement.style.left = '-101%'; 
+      executeGreetingPage();
+    }
     endSequence();
   }
   else{
@@ -428,7 +437,8 @@ function scrollCC(){
 
 // Called at end of sequence. Animates everything out and shows ending text
 function endSequence(){
-  clearInfoBar();
+  if (CONFIG.standbyMode) executeGreetingPage();
+  if (!CONFIG.standbyMode) clearInfoBar();
 }
 
 function twcLogoClick() {
@@ -456,6 +466,7 @@ function clearInfoBar(){
 
 // Animates everything out (not including main background)
 function clearElements(){
+  if (!CONFIG.standbyMode) {
   getElement("outlook-titlebar").classList.add('hidden');
   getElement("forecast-left-container").classList.add('hidden');
   getElement("forecast-right-container").classList.add('hidden');
@@ -463,6 +474,7 @@ function clearElements(){
   getElement("timeline-container").style.visibility = "hidden";
   showEnding();
   setTimeout(clearEnd, 2000);
+  }
 }
 
 function showEnding(){
@@ -494,7 +506,8 @@ function clearEnd(){
   // Reload the page after animation has completed
   // If looping is enabled, the sequence will start again
   // Otherwise, the zip code prompt will show again
-  setTimeout(reloadPage, 400)
+  if (!CONFIG.loop && !CONFIG.standbyMode) setTimeout(reloadPage, 400);
+  // CONFIG.submit();
 }
 
 function reloadPage(){
