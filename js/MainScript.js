@@ -19,7 +19,9 @@ var isDay = true;
 var currentLogo;
 var currentLogoIndex = 0;
 var pageOrder;
+
 var music = new Audio("assets/music/WX_Branding_Short.wav");
+var voice = new Audio("assets/MegaPack/Narrations/Current Conditions/0.mp3");
 var bgd = "assets/backgrounds/TWC_Kmart.png";
 var bgdRed = "https://i.imgur.com/qifw2Se.jpeg";
 var bgdSubRed = "https://i.imgur.com/HP5NCFW.jpeg";
@@ -233,17 +235,136 @@ function executePage(pageIndex, subPageIndex){
 
   if(currentSubPageName == "current-page"){
     setTimeout(loadCC, 1000);
+    setTimeout(playCurrentConditionsVoice(currentTemperature), 1000);
     setTimeout(scrollCC, currentSubPageDuration / 2);
     animateValue('cc-temperature-text', -50, currentTemperature, 2500, 1);
     animateDialFill('cc-dial-color', currentTemperature, 2500);
   }
   else if(currentSubPageName == 'radar-page'){
+    playOneShotVoice("assets/MegaPack/Narrations/Radar/RADAR.wav");
     startRadar();
   }
   else if(currentSubPageName == 'zoomed-radar-page'){
     startZoomedRadar();
+    
   }
   else if(currentSubPageName == "7day-page"){
+    playOneShotVoice("assets/MegaPack/Narrations/The Week Ahead/Here's Our Seven Day Outlook.wav");
+  }
+}
+
+function playOneShotVoice(file) {
+  voice = new Audio(file);
+  music.volume = 0.25;
+  voice.play();
+  voice.onended = function() {
+    music.volume = 0.5;
+  }
+
+}
+
+function playMultiVoice(files) {
+  if (typeof files != Array) return console.warn(`Expected "files" to be of type "Array", but found type "${typeof files}. Aborting playMultiVoice"`);
+  files.forEach(async (elem) => {
+    music.volume = 0.25;
+    voice = new Audio(elem);
+    await voice.play();
+  });
+}
+
+function playCurrentConditionsVoice(temp, condition) {
+  voice = new Audio(`assets/MegaPack/Narrations/Current Conditions/CC_Intro2.wav`);
+  music.volume = 0.25;
+  voice.play();
+  voice.onended = function() {
+    if (temp < 0) {
+      voice = new Audio(`assets/MegaPack/Narrations/Current Conditions/M${temp}.mp3`);
+
+    } else {
+      voice = new Audio(`assets/MegaPack/Narrations/Current Conditions/${temp}.mp3`);
+    }
+    voice.play();
+    voice.onended = function() {
+      voice = new Audio(underFuckedUpSkies(currentCondition));
+      voice.play();
+      voice.onended = function() {
+        music.volume = 0.5;
+      }
+    }
+  }
+}
+
+/* I know this is a terrible way to do this, but i honestly don't give a fuck -- demonitized */
+function underFuckedUpSkies(cond) {
+  let basePath = "assets/MegaPack/Narrations/Current Conditions/";
+  switch (cond) {
+    case "Fair":
+    default:
+      return `${basePath}CC3400.mp3`;
+    
+    case "Sunny":
+      return `${basePath}CC3200.mp3`;
+
+    case "Clear":
+      return `${basePath}CC3100.mp3`;
+
+    case "Showers":
+      return `${basePath}CC2680.mp3`;
+
+    case "Light Drizzle":
+      return `${basePath}CC901.mp3`;
+    
+    case "Drizzle":
+      return `${basePath}CC900.mp3`
+
+    case "Light Rain":
+      return `${basePath}CC1101.mp3`;
+
+    case "Rain":
+      return `${basePath}CC1200.mp3`;
+
+    case "Heavy Rain":
+      return `${basePath}CC1102.mp3`;
+
+    case "Thunder":
+    case "Thunderstorm":
+      return `${basePath}CC429.mp3`;
+
+    case "Heavy Thunder":
+    case "Heavy Thunderstorm":
+      return `${basePath}CC402.mp3`;
+
+    case "Strong Thunder":
+    case "Strong Thunderstorm":
+      return `${basePath}CC422.mp3`;
+
+    case "Light Snow":
+      return `${basePath}CC1601.mp3`;
+
+    case "Snow":
+      return `${basePath}CC1600.mp3`;
+
+    case "Heavy Snow":
+      return `${basePath}CC1402.mp3`
+
+    case "Partly Cloudy":
+      return `${basePath}CC2900.mp3`;
+
+    case "Cloudy":
+      return `${basePath}CC2600.mp3`;
+
+    case "Mostly Cloudy":
+      return `${basePath}CC2700.mp3`;
+
+    case "Hazy":
+      return `${basePath}CC2100.mp3`;
+
+    case "Smokey":
+      return `${basePath}CC2200.mp3`;
+
+    case "Fog":
+    case "Foggy":
+      return `${basePath}CC2000.mp3`;
   }
 }
 

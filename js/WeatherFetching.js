@@ -16,7 +16,7 @@ function guessZipCode(){
     .then(function(response) {
       //check for error
       if (response.status !== 200) {
-        console.log("zip code request error");
+        console.log("Zip code request error");
         return;
       }
       response.json().then(function(data) {
@@ -34,7 +34,7 @@ function fetchAlerts(){
   fetch(`https://api.weather.gov/alerts/active?point=${latitude},${longitude}`)
     .then(function(response) {
       if (response.status !== 200) {
-        console.log("forecast request error");
+        console.log("Forecast request error");
         return;
       }
       response.json().then(function(data) {
@@ -72,7 +72,7 @@ function fetchForecast(){
   fetch(`https://api.weather.com/v1/geocode/${latitude}/${longitude}/forecast/daily/10day.json?language=${CONFIG.language}&units=${CONFIG.units}&apiKey=${CONFIG.secrets.twcAPIKey}`)
     .then(function(response) {
       if (response.status !== 200) {
-        console.log('forecast request error');
+        console.log('Forecast request error');
         return;
       }
       response.json().then(function(data) {
@@ -107,11 +107,12 @@ function fetchForecast(){
     })
 }
 
+
 function fetchCurrentWeather(){
   fetch(`https://api.weather.com/v3/location/point?postalKey=${zipCode}:${CONFIG.countryCode}&language=${CONFIG.language}&format=json&apiKey=${CONFIG.secrets.twcAPIKey}`)
     .then(function(response) {
       if (response.status !== 200) {
-        console.log('conditions request error');
+        console.log('Conditions request error');
         return;
       }
       response.json().then(function(data) {
@@ -129,7 +130,7 @@ function fetchCurrentWeather(){
         fetch(`https://api.weather.com/v1/geocode/${latitude}/${longitude}/observations/current.json?language=${CONFIG.language}&units=${CONFIG.units}&apiKey=${CONFIG.secrets.twcAPIKey}`)
           .then(function(response) {
             if (response.status !== 200) {
-              console.log("conditions request error");
+              console.warn("Conditions request error");
                 return;
             }
             response.json().then(function(data) {
@@ -144,7 +145,7 @@ function fetchCurrentWeather(){
               humidity = unit.rh
               dewPoint = unit.dewpt
               pressure = unit.altimeter.toPrecision(4);
-              let ptendCode = data.observation.ptend_code
+              let ptendCode = data.observation.ptend_code 
               pressureTrend = (ptendCode == 1 || ptendCode == 3) ? '▲' : ptendCode == 0 ? '' : '▼'; // if ptendCode == 1 or 3 (rising/rising rapidly) up arrow else its steady then nothing else (falling (rapidly)) down arrow
               currentIcon = data.observation.icon_code
               fetchAlerts();
@@ -170,7 +171,6 @@ function fetchRadarImages(){
       let JASON = await response.json();
       await JASON.days[0].stations.forEach((radarStation) => {
         let validRadars = ["KDIX","KSJT","KLOT","KFTG","KEYX","KBUF","KDFX","KGRK","KSGF","KHGX","KSRX","KCAE","KAMX","KCCX","KDDC","KVBX","KBBX","KCBW","KMLB","KMBX","RKSG","KGRB","KDMX","KEVX","KESX","KOTX","KRIW","KGWX","KIWX","KGGW","KVNX","KPOE","KFFC","KSHV","KVAX","KLRX","KCXX","KBIS","KHNX","KLWX","KOAX","KFCX","KCRP","KMAF","KCLE","KFDR","KPDT","KDGX","KTWX","KBGM","KATX","PABC","KMTX","KCBX","KUEX","KCLX","KLVX","KPUX","KLSX","KNKX","KVWX","KMSX","KFDX","KNQA","KLZK","KLCH","PAIH","KMKX","PAKC","KILN","PHWA","KEWX","KTYX","KLNX","KLBB","PAEC","KHPX","KRGX","KMAX","KICT","KDTX","KHDX","KMOB","PHKM","KMRX","KUDX","KCYS","KVTX","KMHX","KHDC","KGJX","KBYX","KAPX","KARX","KMUX","KDLH","KDOX","RKJK","PAPD","KSOX","KGSP","KBLX","KTFX","TJUA","PGUA","KMXX","KJKL","KJGX","KBOX","KAMA","RODN","KABR","KHTX","KIND","KTLH","KDVN","KMVX","KBHX","KJAX","KGRR","KFSD","KMQT","KLTX","PHKI","KRAX","PACG","KINX","KEMX","KGYX","KIWA","KRLX","KEAX","PAHG","KSFX","KTBW","KEOX","KABX","KTLX","KRTX","PHMO","KICX","KBRO","KAKQ","KBMX","KYUX","KGLD","KDAX","KENX","KFWS","KOHX","KEPZ","KDYX","KFSX","KPBZ","KMPX","KOKX","KILX","KPAH","KLGX"];
-      console.log(radarStation);
       if (validRadars.includes(radarStation)) {
         
         document.getElementsByClassName("broken-radar-text")[0].style.display = "none";
