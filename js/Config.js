@@ -1,6 +1,6 @@
 window.CONFIG = {
-  crawl: `Kmart News Network brought to you by The Weather Channel! Also did you know that this is a looping text box? I didn't and now I have to keep typing stuff here to make it look fuller than it actually is. Uh- So what's up with airplane food? Not funny, ok then well did you know that VRChat is adding cool shit in their beta? Well they are! Anyways I ran out of ideas so bye bye!`,
-  greeting: 'Kmart News Network Weather',
+  crawl: `Kmart News Network brought to you by The Weather Channel! Also did you know that this is a looping text box? I didn't and now I have to keep typing stuff here to make it look fuller than it actually is. Uh- So what's up with airplane food? Not funny, ok then well did you know that VRChat is adding cool shit in their beta? Well they are! Also did you know that Marcella is a stinky smelly programmer who likes kissing girls? She does, and she's REALLY GOOD at it ;) Anyways I ran out of ideas so bye bye!`,
+  greeting: 'Kmart Weather Channel',
   language: 'en-US', // Supported in TWC API
   countryCode: 'US', // Supported in TWC API (for postal key)
   units: 'e', // Supported in TWC API (e = English (imperial), m = Metric, h = Hybrid (UK)),
