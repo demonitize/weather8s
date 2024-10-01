@@ -276,7 +276,7 @@ function playMultiVoice(files) {
 }
 
 function playCurrentConditionsVoice(temp, condition) {
-  voice = new Audio(`assets/MegaPack/Narrations/Current Conditions/CC_Intro2.wav`);
+  voice = new Audio(`assets/MegaPack/Narrations/Current Conditions/CC_INTRO2.wav`);
   music.volume = 0.25;
   voice.play();
   voice.onended = function() {
