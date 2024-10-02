@@ -121,6 +121,7 @@ function setMainBackground(){
 }
 
 function checkStormMusic(){
+  let emergencyAlert = new RegExp(/|/i)
   let majorStorm = new RegExp(/Hurricane|Tornado|Flood|Tsunami|Evacuation|Blizzard/i);
   let minorStorm = new RegExp(/Test|Severe|Thunder|Cyclone|Heat|Freeze|Wind/i);
   if(currentCondition.toLowerCase().includes("storm") || majorStorm.test(alerts)){
@@ -238,13 +239,13 @@ function executePage(pageIndex, subPageIndex){
 
   if(currentSubPageName == "current-page"){
     setTimeout(loadCC, 1000);
-    setTimeout(playCurrentConditionsVoice(currentTemperature), 2500);
+    if (!CONFIG.standbyMode) setTimeout(playCurrentConditionsVoice(currentTemperature), 2500);
     setTimeout(scrollCC, currentSubPageDuration / 2);
     animateValue('cc-temperature-text', -50, currentTemperature, 2500, 1);
     animateDialFill('cc-dial-color', currentTemperature, 2500);
   }
   else if(currentSubPageName == 'radar-page'){
-    playOneShotVoice("assets/MegaPack/Narrations/Radar/RADAR.wav");
+    if (!CONFIG.standbyMode) playOneShotVoice("assets/MegaPack/Narrations/Radar/RADAR.wav");
     startRadar();
   }
   else if(currentSubPageName == 'zoomed-radar-page'){
@@ -252,7 +253,7 @@ function executePage(pageIndex, subPageIndex){
     
   }
   else if(currentSubPageName == "7day-page"){
-    playOneShotVoice("assets/MegaPack/Narrations/The Week Ahead/Here's Our Seven Day Outlook.wav");
+    if (!CONFIG.standbyMode) playOneShotVoice("assets/MegaPack/Narrations/The Week Ahead/Here's Our Seven Day Outlook.wav");
   }
 }
 

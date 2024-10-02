@@ -1,0 +1,11 @@
+@keyframes resetPosition {
+    0% {
+        top:200%;
+    }
+    50% {
+        left: 101%;
+    }
+    100% {
+        top:0px;
+    }
+}

@@ -9,8 +9,8 @@
 }
 
 .alert-page-container{
-  top: 101%;
-  left: 0px;
+  /* top: 0px; */
+  left: 101%;
 }
 
 .multiple-alert-text{
