@@ -7,10 +7,7 @@ function checkStandbyMode() {
     //     loop: true,
     //     loadLimit: 1,
     // }); /* Gives us a seamless loop */
-
-    music = new Audio("assets/music/StandbyMode_3.wav");
-    music.loop = true;
-    music.play();
+    
     getElement('background-image').style.backgroundImage = `url('assets/backgrounds/TWC_Kmart.png')`;
     
 }

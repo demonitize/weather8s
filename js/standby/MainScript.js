@@ -5,26 +5,26 @@ const SINGLE = [{name: "Alert", subpages: [{name: "single-alert-page", duration:
 const MULTIPLE = [{name: "Alerts", subpages: [{name: "multiple-alerts-page", duration: 7000}]},{name: "Now", subpages: [{name: "current-page", duration: 8000}, {name: "radar-page", duration: 8000}, {name: "zoomed-radar-page", duration: 8000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000}, {name: "7day-page", duration: 13000}]},]
 const WEEKDAY = ["SUN",  "MON", "TUES", "WED", "THU", "FRI", "SAT"];
 
-const STANDBYSINGLE = [{name: "Alert", subpages: [{name: "single-alert-page", duration: 10000}]},{name: "Now", subpages: [{name: "current-page", duration: 10000}, {name: "radar-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 10000}, {name: "7day-page", duration: 10000}]},]
-const STANDBYMULTI = [{name: "Alerts", subpages: [{name: "multiple-alerts-page", duration: 10000}]},{name: "Now", subpages: [{name: "current-page", duration: 10000}, {name: "radar-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 10000}, {name: "7day-page", duration: 10000}]},]
-const STANDBY = [{name: "Now", subpages: [{name: "current-page", duration: 10000}, {name: "radar-page", duration: 15000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 10000}, {name: "7day-page", duration: 15000}]},]
+const STANDBYSINGLE = [{name: "Alert", subpages: [{name: "single-alert-page", duration: 10000}]},{name: "Now", subpages: [{name: "current-page", duration: 10000}, {name: "radar-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 6500},{name: "tomorrow-night-page", duration: 6500}, {name: "7day-page", duration: 7000}]},]
+const STANDBYMULTI = [{name: "Alerts", subpages: [{name: "multiple-alerts-page", duration: 10000}]},{name: "Now", subpages: [{name: "current-page", duration: 10000}, {name: "radar-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 6500},{name: "tomorrow-night-page", duration: 6500},{name: "7day-page", duration: 7000}]},]
+const STANDBY = [{name: "Now", subpages: [{name: "current-page", duration: 10000}, {name: "radar-page", duration: 15000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 7500},{name: "tomorrow-night-page", duration: 7500},{name: "7day-page", duration: 10000}]},]
 
 const jingle = new Audio("assets/music/jingle.wav");
 const crawlSpeed = 150;
 
-/* var musicV2 = new Gapless5({
-  tracks: ['assets/music/WX_Branding_Short.wav'],
-  loop: false,
+var music = new Gapless5({
+  tracks: ['https://demonitize.github.io/weather8s/assets/music/StandbyMode_3.wav'],
+  loop: true,
   loadLimit: 1,
   // mapKeys: {prev: 'a', playpause: 's', stop: 'd', next: 'f'},
-}); */
+});
 
 var isDay = true;
 var currentLogo;
 var currentLogoIndex = 0;
 var pageOrder;
 
-var music = new Audio("assets/music/WX_Branding_Short.wav");
+// var music = new Audio("assets/music/WX_Branding_Short.wav");
 var voice = new Audio("assets/MegaPack/Narrations/Current Conditions/0.mp3");
 var bgd = "assets/backgrounds/TWC_Kmart.png";
 var bgdRed = "https://i.imgur.com/qifw2Se.jpeg";
@@ -65,7 +65,7 @@ function toggleAdvancedSettings(){
 function preLoadMusic(){
   /* Sets a random track to play */
   // musicV2.replaceTrack(0, CONFIG.musicTracks[selectRandomArray(CONFIG.musicTracks)]);
-  music = new Audio(CONFIG.musicTracks[selectRandomArray(CONFIG.musicTracks)]);
+  // music = new Audio(CONFIG.musicTracks[selectRandomArray(CONFIG.musicTracks)]);
   bgd = CONFIG.mainBackgrounds[selectRandomArray(CONFIG.mainBackgrounds)];
   bgdRed = CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.redModeBackgrounds)];
   bgdSubRed = CONFIG.subRedModeBackgrounds[selectRandomArray(CONFIG.subRedModeBackgrounds)];
@@ -148,6 +148,7 @@ function startAnimation(){
 
 function startMusic(){
   music.play();
+  music.loop = true;
   // musicV2.play();
 }
 
@@ -227,6 +228,7 @@ function executePage(pageIndex, subPageIndex){
   }
   if (pageIndex == 0 && subPageIndex == 0) {
     currentLogoIndex = 0;
+    currentLogo = undefined;
     getElement('logo-stack').style.left = "0px";
     getElement('progressbar').classList.add('progress');
     getElement('progress-stack').style.left = "0px";
@@ -266,6 +268,10 @@ function executePage(pageIndex, subPageIndex){
 
     getElement(`tonight-page`).style.display = "none";
     getElement(`tonight-page`).style.left = "101%";
+    
+    getElement(`tomorrow-night-page`).style.display = "none";
+    getElement(`tomorrow-night-page`).style.left = "101%";
+
 
   }
   else if (currentSubPageName == 'tonight-page') {
@@ -289,6 +295,7 @@ function executePage(pageIndex, subPageIndex){
 
     getElement(`tonight-page`).style.display = "block";
     getElement(`tomorrow-page`).style.display = "block";
+    getElement(`tomorrow-night-page`).style.display = "block";
     
     startRadar();
   }
@@ -439,7 +446,7 @@ function clearPage(pageIndex, subPageIndex){
   var isNewPage = subPageCount-1 == subPageIndex;
   var isLastPage = pageIndex >= pageOrder.length-1 && subPageIndex >= pageOrder[pageOrder.length-1].subpages.length-1;
 
-  if(isNewPage && !isLastPage){
+  if(isNewPage || isLastPage){
     resetProgressBar();
   }
 

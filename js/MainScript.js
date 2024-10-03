@@ -225,7 +225,6 @@ function executePage(pageIndex, subPageIndex){
 
   currentSubPageElement.style.transitionDelay = '0.5s';
   if(pageIndex === 0 && subPageIndex == 0){
-    currentSubPageElement.style.left = '0px';
     currentSubPageElement.style.top = '0px';
   }
   else{
@@ -239,13 +238,13 @@ function executePage(pageIndex, subPageIndex){
 
   if(currentSubPageName == "current-page"){
     setTimeout(loadCC, 1000);
-    if (!CONFIG.standbyMode) setTimeout(playCurrentConditionsVoice(currentTemperature), 2500);
+    setTimeout(playCurrentConditionsVoice(currentTemperature), 2500);
     setTimeout(scrollCC, currentSubPageDuration / 2);
     animateValue('cc-temperature-text', -50, currentTemperature, 2500, 1);
     animateDialFill('cc-dial-color', currentTemperature, 2500);
   }
   else if(currentSubPageName == 'radar-page'){
-    if (!CONFIG.standbyMode) playOneShotVoice("assets/MegaPack/Narrations/Radar/RADAR.wav");
+    playOneShotVoice("assets/MegaPack/Narrations/Radar/RADAR.wav");
     startRadar();
   }
   else if(currentSubPageName == 'zoomed-radar-page'){
@@ -253,14 +252,13 @@ function executePage(pageIndex, subPageIndex){
     
   }
   else if(currentSubPageName == "7day-page"){
-    if (!CONFIG.standbyMode) playOneShotVoice("assets/MegaPack/Narrations/The Week Ahead/Here's Our Seven Day Outlook.wav");
+    playOneShotVoice("assets/MegaPack/Narrations/The Week Ahead/Here's Our Seven Day Outlook.wav");
   }
 }
 
 function playOneShotVoice(file) {
   voice = new Audio(file);
   music.volume = 0.25;
-  voice.volume = 0.5;
   voice.play();
   voice.onended = function() {
     music.volume = 0.5;
@@ -280,7 +278,6 @@ function playMultiVoice(files) {
 function playCurrentConditionsVoice(temp, condition) {
   voice = new Audio(`assets/MegaPack/Narrations/Current Conditions/CC_INTRO2.wav`);
   music.volume = 0.25;
-  voice.volume = 0.5;
   voice.play();
   voice.onended = function() {
     if (temp < 0) {
