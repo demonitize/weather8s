@@ -121,7 +121,6 @@ function setMainBackground(){
 }
 
 function checkStormMusic(){
-  let emergencyAlert = new RegExp(/|/i)
   let majorStorm = new RegExp(/Hurricane|Tornado|Flood|Tsunami|Evacuation|Blizzard/i);
   let minorStorm = new RegExp(/Test|Severe|Thunder|Cyclone|Heat|Freeze|Wind/i);
   if(currentCondition.toLowerCase().includes("storm") || majorStorm.test(alerts)){
@@ -226,6 +225,7 @@ function executePage(pageIndex, subPageIndex){
 
   currentSubPageElement.style.transitionDelay = '0.5s';
   if(pageIndex === 0 && subPageIndex == 0){
+    currentSubPageElement.style.left = '0px';
     currentSubPageElement.style.top = '0px';
   }
   else{
@@ -260,6 +260,7 @@ function executePage(pageIndex, subPageIndex){
 function playOneShotVoice(file) {
   voice = new Audio(file);
   music.volume = 0.25;
+  voice.volume = 0.5;
   voice.play();
   voice.onended = function() {
     music.volume = 0.5;
@@ -279,6 +280,7 @@ function playMultiVoice(files) {
 function playCurrentConditionsVoice(temp, condition) {
   voice = new Audio(`assets/MegaPack/Narrations/Current Conditions/CC_INTRO2.wav`);
   music.volume = 0.25;
+  voice.volume = 0.5;
   voice.play();
   voice.onended = function() {
     if (temp < 0) {

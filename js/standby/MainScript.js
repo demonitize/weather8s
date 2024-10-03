@@ -31,7 +31,7 @@ var bgdRed = "https://i.imgur.com/qifw2Se.jpeg";
 var bgdSubRed = "https://i.imgur.com/HP5NCFW.jpeg";
 
 window.onload = function() {
-  CONFIG.addOption('zip-code', 'ZIP Code', '00000');
+  CONFIG.addOption('zip-code', 'ZIP Code', '95340');
   CONFIG.addOption('crawlText', 'Crawl Text', 'Text that scrolls along the bottom');
   CONFIG.addOption('greetingText', 'Greeting Text', 'Message (or joke) that appears at the start');
   CONFIG.load();
@@ -225,6 +225,12 @@ function executePage(pageIndex, subPageIndex){
       getElement('timeline-event-container').style.left = (-280*pageIndex).toString() + "px";
       getElement('progress-stack').style.left = (-280*pageIndex).toString() + "px";
   }
+  if (pageIndex == 0 && subPageIndex == 0) {
+    currentLogoIndex = 0;
+    getElement('logo-stack').style.left = "0px";
+    getElement('progressbar').classList.add('progress');
+    getElement('progress-stack').style.left = "0px";
+  }
 
   if(currentLogo != getPageLogoFileName(currentSubPageName)){
     getElement('logo-stack').style.left = ((-85*currentLogoIndex)-(20*currentLogoIndex)).toString() + "px";
@@ -265,6 +271,8 @@ function executePage(pageIndex, subPageIndex){
   else if (currentSubPageName == 'tonight-page') {
     getElement(`current-page`).style.display = "none";
     getElement(`current-page`).style.left = "101%";
+    getElement(`7day-page`).style.display = "block";
+
   }
   else if(currentSubPageName == 'radar-page'){
     getElement(`7day-page`).style.display = "none";
@@ -279,7 +287,6 @@ function executePage(pageIndex, subPageIndex){
 
 
 
-    getElement(`7day-page`).style.display = "block";
     getElement(`tonight-page`).style.display = "block";
     getElement(`tomorrow-page`).style.display = "block";
     
@@ -299,6 +306,10 @@ function executePage(pageIndex, subPageIndex){
     
     getElement(`radar-page`).style.display = "none";
     getElement(`radar-page`).style.left = "101%";
+  } else if (currentSubPageName == "single-alert-page" || currentSubPageName == "multiple-alerts-page") {
+    getElement('timeline-event-container').style.left = "0px";
+    // getElement('progressbar').style.transitionDuration = "10001ms";
+    getElement('progressbar').style.transitionDuration = "10000ms";
   }
 
 }
@@ -325,7 +336,7 @@ function playMultiVoice(files) {
 function playCurrentConditionsVoice(temp, condition) {
   voice = new Audio(`assets/MegaPack/Narrations/Current Conditions/CC_INTRO2.wav`);
   music.volume = 0.25;
-  voice.volume = 0.5;
+  voice.volume = 0.25;
   voice.play();
   voice.onended = function() {
     if (temp < 0) {
