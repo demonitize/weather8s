@@ -11,6 +11,6 @@ function checkStandbyMode() {
     music = new Audio("assets/music/StandbyMode_3.wav");
     music.loop = true;
     music.play();
-    getElement('background-image').style.backgroundImage = `url('https://i.imgur.com/QEGOx35.jpeg')`;
+    getElement('background-image').style.backgroundImage = `url('assets/backgrounds/TWC_Kmart.png')`;
     
 }
