@@ -1,8 +1,8 @@
 // Preset timeline sequences
-const MORNING = [{name: "Now", subpages: [{name: "current-page", duration: 9000}, {name: "radar-page", duration: 8000}]},{name: "Today", subpages: [{name: "today-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 10000}, {name: "7day-page", duration: 13000}]},]
-const NIGHT = [{name: "Now", subpages: [{name: "current-page", duration: 9000}, {name: "radar-page", duration: 8000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 10000}, {name: "tomorrow-night-page", duration: 10000}, {name: "7day-page", duration: 13000}]},]
-const SINGLE = [{name: "Alert", subpages: [{name: "single-alert-page", duration: 7000}]},{name: "Now", subpages: [{name: "current-page", duration: 8000}, {name: "radar-page", duration: 8000}, {name: "zoomed-radar-page", duration: 8000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000}, {name: "7day-page", duration: 13000}]},]
-const MULTIPLE = [{name: "Alerts", subpages: [{name: "multiple-alerts-page", duration: 7000}]},{name: "Now", subpages: [{name: "current-page", duration: 8000}, {name: "radar-page", duration: 8000}, {name: "zoomed-radar-page", duration: 8000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000}, {name: "7day-page", duration: 13000}]},]
+const MORNING = [{name: "Now", subpages: [{name: "current-page", duration: 9000}, {name: "radar-page", duration: 8000}]},{name: "Today", subpages: [{name: "today-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 6500}, {name: "tomorrow-night-page", duration: 6500},{name: "7day-page", duration: 10000}]},]
+const NIGHT = [{name: "Now", subpages: [{name: "current-page", duration: 9000}, {name: "radar-page", duration: 8000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 10000}, {name: "tomorrow-night-page", duration: 10000}, {name: "7day-page", duration: 10000}]},]
+const SINGLE = [{name: "Alert", subpages: [{name: "single-alert-page", duration: 7000}]},{name: "Now", subpages: [{name: "current-page", duration: 8000}, {name: "radar-page", duration: 8000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 6500}, {name: "tomorrow-page", duration: 6500}, {name: "7day-page", duration: 10000}]},]
+const MULTIPLE = [{name: "Alerts", subpages: [{name: "multiple-alerts-page", duration: 7000}]},{name: "Now", subpages: [{name: "current-page", duration: 8000}, {name: "radar-page", duration: 8000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 6500},{name: "tomorrow-page", duration: 6500}, {name: "7day-page", duration: 10000}]},]
 const WEEKDAY = ["SUN",  "MON", "TUES", "WED", "THU", "FRI", "SAT"];
 
 const jingle = new Audio("assets/music/jingle.wav");
@@ -224,12 +224,7 @@ function executePage(pageIndex, subPageIndex){
   }
 
   currentSubPageElement.style.transitionDelay = '0.5s';
-  if(pageIndex === 0 && subPageIndex == 0){
-    currentSubPageElement.style.top = '0px';
-  }
-  else{
-    currentSubPageElement.style.left = '0px';
-  }
+  currentSubPageElement.style.left = '0px';
 
   var isLastPage = pageIndex >= pageOrder.length-1 && subPageIndex >= pageOrder[pageOrder.length-1].subpages.length-1;
   if(isLastPage && !CONFIG.standbyMode)
@@ -238,13 +233,13 @@ function executePage(pageIndex, subPageIndex){
 
   if(currentSubPageName == "current-page"){
     setTimeout(loadCC, 1000);
-    setTimeout(playCurrentConditionsVoice(currentTemperature), 2500);
+    setTimeout(playCurrentConditionsVoice(currentTemperature, 0.5, 1, 1), 2500);
     setTimeout(scrollCC, currentSubPageDuration / 2);
     animateValue('cc-temperature-text', -50, currentTemperature, 2500, 1);
     animateDialFill('cc-dial-color', currentTemperature, 2500);
   }
   else if(currentSubPageName == 'radar-page'){
-    playOneShotVoice("assets/MegaPack/Narrations/Radar/RADAR.wav");
+    playOneShotVoice("assets/MegaPack/Narrations/Radar/RADAR.wav", 0.5);
     startRadar();
   }
   else if(currentSubPageName == 'zoomed-radar-page'){
@@ -252,13 +247,14 @@ function executePage(pageIndex, subPageIndex){
     
   }
   else if(currentSubPageName == "7day-page"){
-    playOneShotVoice("assets/MegaPack/Narrations/The Week Ahead/Here's Our Seven Day Outlook.wav");
+    playOneShotVoice("assets/MegaPack/Narrations/The Week Ahead/Here's Our Seven Day Outlook.wav", 1);
   }
 }
 
-function playOneShotVoice(file) {
-  voice = new Audio(file);
+function playOneShotVoice(file, voiceVol = 1) {
+  voice.src = file;
   music.volume = 0.25;
+  voice.volume = voiceVol;
   voice.play();
   voice.onended = function() {
     music.volume = 0.5;
@@ -266,29 +262,22 @@ function playOneShotVoice(file) {
 
 }
 
-function playMultiVoice(files) {
-  if (typeof files != Array) return console.warn(`Expected "files" to be of type "Array", but found type "${typeof files}. Aborting playMultiVoice"`);
-  files.forEach(async (elem) => {
-    music.volume = 0.25;
-    voice = new Audio(elem);
-    await voice.play();
-  });
-}
-
-function playCurrentConditionsVoice(temp, condition) {
-  voice = new Audio(`assets/MegaPack/Narrations/Current Conditions/CC_INTRO2.wav`);
+function playCurrentConditionsVoice(temp, volIntro = 0.5, volTemp = 1, volCond = 1) {
+  voice.src = `assets/MegaPack/Narrations/Current Conditions/CC_INTRO2.wav`;
   music.volume = 0.25;
+  voice.volume = volIntro;
   voice.play();
   voice.onended = function() {
     if (temp < 0) {
-      voice = new Audio(`assets/MegaPack/Narrations/Current Conditions/M${temp}.mp3`);
-
+      voice.src = `assets/MegaPack/Narrations/Current Conditions/M${temp}.mp3`;
     } else {
-      voice = new Audio(`assets/MegaPack/Narrations/Current Conditions/${temp}.mp3`);
+      voice.src = `assets/MegaPack/Narrations/Current Conditions/${temp}.mp3`;
     }
+    voice.volume = volTemp;
     voice.play();
     voice.onended = function() {
-      voice = new Audio(underFuckedUpSkies(currentCondition));
+      voice.src = underFuckedUpSkies(currentCondition);
+      voice.volume = volCond;
       voice.play();
       voice.onended = function() {
         music.volume = 0.5;

@@ -123,7 +123,6 @@ function setMainBackground(){
 }
 
 function checkStormMusic(){
-  let emergencyAlert = new RegExp(/|/i)
   let majorStorm = new RegExp(/Hurricane|Tornado|Flood|Tsunami|Evacuation|Blizzard/i);
   let minorStorm = new RegExp(/Test|Severe|Thunder|Cyclone|Heat|Freeze|Wind/i);
   if(currentCondition.toLowerCase().includes("storm") || majorStorm.test(alerts)){
