@@ -63,7 +63,8 @@ function preLoadMusic(){
   // musicV2.replaceTrack(0, CONFIG.musicTracks[selectRandomArray(CONFIG.musicTracks)]);
   music = new Audio(CONFIG.musicTracks[selectRandomArray(CONFIG.musicTracks)]);
   bgd = CONFIG.mainBackgrounds[selectRandomArray(CONFIG.mainBackgrounds)];
-  bgdRed = CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.redModeBackgrounds)];
+  // bgdRed = CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.redModeBackgrounds)];
+  bgdRed = CONFIG.winterStormBackgrounds[0];
   bgdSubRed = CONFIG.subRedModeBackgrounds[selectRandomArray(CONFIG.subRedModeBackgrounds)];
 
   if (bgd == undefined || bgdRed == undefined || bgdSubRed == undefined || music == undefined) {
@@ -224,7 +225,14 @@ function executePage(pageIndex, subPageIndex){
   }
 
   currentSubPageElement.style.transitionDelay = '0.5s';
-  currentSubPageElement.style.left = '0px';
+
+  if(pageIndex === 0 && subPageIndex == 0){
+    currentSubPageElement.style.top = '0px';
+    currentSubPageElement.style.left = '0px';
+  }
+  else{
+    currentSubPageElement.style.left = '0px';
+  }
 
   var isLastPage = pageIndex >= pageOrder.length-1 && subPageIndex >= pageOrder[pageOrder.length-1].subpages.length-1;
   if(isLastPage && !CONFIG.standbyMode)

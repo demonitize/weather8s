@@ -1,5 +1,6 @@
 window.CONFIG = {
-    crawl: `Kmart News Network brought to you by The Weather Channel! Also did you know that this is a looping text box? I didn't and now I have to keep typing stuff here to make it look fuller than it actually is. Uh- So what's up with airplane food? Not funny, ok then well did you know that VRChat is adding cool shit in their beta? Well they are! Also did you know that Marcella is a stinky smelly programmer who likes kissing girls? She does, and she's REALLY GOOD at it ;) Anyways I ran out of ideas so bye bye!`,
+    // crawl: `Kmart News Network brought to you by The Weather Channel! Also did you know that this is a looping text box? I didn't and now I have to keep typing stuff here to make it look fuller than it actually is. Uh- So what's up with airplane food? Not funny, ok then well did you know that VRChat is adding cool shit in their beta? Well they are! Also did you know that Marcella is a stinky smelly programmer who likes kissing girls? She does, and she's REALLY GOOD at it ;) Anyways I ran out of ideas so bye bye!`,
+    crawl: `VRC Kmart wishes you and your family a Happy Holidays. The National Weather Service has not issued any alerts for your area.`,
     greeting: 'Kmart Weather Channel',
     language: 'en-US', // Supported in TWC API
     countryCode: 'US', // Supported in TWC API (for postal key)
@@ -29,18 +30,18 @@ window.CONFIG = {
       "assets/music/WX_Weekend_Recharge_2.wav",
     ],
     mainBackgrounds: [
-      "assets/backgrounds/TWC_Kmart.png",
-      "https://i.imgur.com/V41pDkt.jpeg",
-      "https://i.imgur.com/U5rQOJD.jpeg",
-      "https://i.imgur.com/F25Xbv3.jpeg",
-      "https://i.imgur.com/uDZEzSf.jpeg",
-      "https://i.imgur.com/J2W7c7i.jpeg",
+      // "assets/backgrounds/TWC_Kmart.png",
+      // "https://i.imgur.com/V41pDkt.jpeg",
+      // "https://i.imgur.com/U5rQOJD.jpeg",
+      // "https://i.imgur.com/F25Xbv3.jpeg",
+      // "https://i.imgur.com/uDZEzSf.jpeg",
+      // "https://i.imgur.com/J2W7c7i.jpeg",
       /* Winter Backgrounds */
-      // "https://i.imgur.com/unlTvYM.jpeg",
-      // "https://i.imgur.com/o6qkm3S.jpeg",
-      // "https://i.imgur.com/oryJwKg.jpeg",
-      // "https://i.imgur.com/YIe8scl.jpeg",
-      // "https://i.imgur.com/w223SHG.jpeg"
+      "https://i.imgur.com/unlTvYM.jpeg",
+      "https://i.imgur.com/o6qkm3S.jpeg",
+      "https://i.imgur.com/oryJwKg.jpeg",
+      "https://i.imgur.com/YIe8scl.jpeg",
+      "https://i.imgur.com/w223SHG.jpeg"
   
     ],
     redModeBackgrounds: [
@@ -80,7 +81,9 @@ window.CONFIG = {
       if (args.crawlText !== '') CONFIG.crawl = args.crawlText
       if (args.greetingText !== '') CONFIG.greeting = args.greetingText
       if (args.loop === 'y') CONFIG.loop = true
-      if(/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(args['zip-code'])){
+      if (getQueryVariable(`zip`) != false) {
+        zipCode = getQueryVariable(`zip`);
+      } else if(/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(args['zip-code'])){
         zipCode = args['zip-code'];
       } else {
         alert("Enter valid ZIP code");
@@ -140,7 +143,8 @@ window.CONFIG = {
       btn.style = 'margin-bottom: 10px;'
       btn.appendChild(document.createTextNode('Start'))
       settingsPrompt.appendChild(btn)
-      if (CONFIG.loop || localStorage.getItem('loop') === 'y' || CONFIG.standbyModex) {
+      if (CONFIG.loop || localStorage.getItem('loop') === 'y' || CONFIG.standbyMode) {
+        zipCode = getQueryVariable(`zip`);
         CONFIG.loop = true;
         hideSettings();
         CONFIG.submit()
