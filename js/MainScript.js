@@ -321,6 +321,7 @@ function underFuckedUpSkies(cond) {
       return `${basePath}CC1101.mp3`;
 
     case "Rain":
+    case "Rain Shower":
       return `${basePath}CC1200.mp3`;
 
     case "Heavy Rain":
