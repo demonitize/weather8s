@@ -1,7 +1,7 @@
 function setGreetingPage(){
   getElement("hello-location-text").innerHTML = cityName + ",";
   getElement("infobar-location-text").innerHTML = cityName;
-  getElement("greeting-text").innerHTML = CONFIG.greeting;
+  getElement("greeting-text").innerHTML = CONFIG.greetings[selectRandomArray(CONFIG.greetings)];
   getElement("crawl-text").innerHTML = CONFIG.crawl;
 }
 

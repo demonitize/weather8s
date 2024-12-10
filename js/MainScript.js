@@ -115,7 +115,7 @@ function setInformation(){
 }
 
 function selectRandomArray(arr) {
-  return Math.floor(Math.random() * arr.length) - 1;
+  return Math.floor(Math.random() * arr.length);
 }
 function setMainBackground(){
   getElement('background-image').style.backgroundImage = `url(${bgd})`;
@@ -241,7 +241,7 @@ function executePage(pageIndex, subPageIndex){
 
   if(currentSubPageName == "current-page"){
     setTimeout(loadCC, 1000);
-    setTimeout(playCurrentConditionsVoice(currentTemperature, 0.5, 1, 1), 2500);
+    setTimeout(playCurrentConditionsVoice(currentTemperature, 0.5, 1, 1), 3000);
     setTimeout(scrollCC, currentSubPageDuration / 2);
     animateValue('cc-temperature-text', -50, currentTemperature, 2500, 1);
     animateDialFill('cc-dial-color', currentTemperature, 2500);

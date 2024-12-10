@@ -116,7 +116,7 @@ function setInformation(){
 }
 
 function selectRandomArray(arr) {
-  return Math.floor(Math.random() * arr.length) - 1;
+  return Math.floor(Math.random() * arr.length);
 }
 function setMainBackground(){
   getElement('background-image').style.backgroundImage = `url(${bgd})`;
@@ -137,7 +137,8 @@ function checkStormMusic(){
 function startAnimation(){
   setInitialPositionCurrentPage();
   // musicV2.setVolume(0.5);
-  music.volume = 0.5;
+  // music.volume = 0.5;
+  music.volume = 1;
   jingle.volume = 0.25;
   voice.volume = 0.5;
   jingle.play();

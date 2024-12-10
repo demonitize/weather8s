@@ -1,7 +1,18 @@
 window.CONFIG = {
   // crawl: `Kmart News Network brought to you by The Weather Channel! Also did you know that this is a looping text box? I didn't and now I have to keep typing stuff here to make it look fuller than it actually is. Uh- So what's up with airplane food? Not funny, ok then well did you know that VRChat is adding cool shit in their beta? Well they are! Also did you know that Marcella is a stinky smelly programmer who likes kissing girls? She does, and she's REALLY GOOD at it ;) Anyways I ran out of ideas so bye bye!`,
   crawl: `VRC Kmart wishes you and your family a Happy Holidays. The National Weather Service has not issued any alerts for your area.`,
-  greeting: 'Kmart Weather Channel',
+  greetings: [
+    "Here's Your<br>Local Weather",
+    "Baby It's<br>Cold Outside",
+    "Currently In<br>Our Area",
+    "Jim Cantore<br>My Beloved",
+    "LDL Sold<br>Separately",
+    "JSchlatt Christmas<br>Album Goes Hard",
+    "Canada Isn't Real<br>Change My Mind",
+    "Not So<br>IntelliSTAR",
+    "If It's Raining We Become<br>The Wetter Channel",
+    "A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning"
+  ],
   language: 'en-US', // Supported in TWC API
   countryCode: 'US', // Supported in TWC API (for postal key)
   units: 'e', // Supported in TWC API (e = English (imperial), m = Metric, h = Hybrid (UK)),
@@ -79,7 +90,7 @@ window.CONFIG = {
       localStorage.setItem(opt.id, args[opt.id])
     })
     if (args.crawlText !== '') CONFIG.crawl = args.crawlText
-    if (args.greetingText !== '') CONFIG.greeting = args.greetingText
+    if (args.greetingText !== '') CONFIG.greetings[selectRandomArray(CONFIG.greetings)] = args.greetingText
     if (args.loop === 'y') CONFIG.loop = true
     if (getQueryVariable(`zip`) != false) {
       zipCode = getQueryVariable(`zip`);
