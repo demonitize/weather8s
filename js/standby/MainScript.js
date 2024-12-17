@@ -5,9 +5,9 @@ const SINGLE = [{name: "Alert", subpages: [{name: "single-alert-page", duration:
 const MULTIPLE = [{name: "Alerts", subpages: [{name: "multiple-alerts-page", duration: 7000}]},{name: "Now", subpages: [{name: "current-page", duration: 8000}, {name: "radar-page", duration: 8000}, {name: "zoomed-radar-page", duration: 8000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000}, {name: "7day-page", duration: 13000}]}]
 const WEEKDAY = ["SUN",  "MON", "TUES", "WED", "THU", "FRI", "SAT"];
 
-const STANDBYSINGLE = [{name: "Alert", subpages: [{name: "single-alert-page", duration: 10000}]},{name: "Now", subpages: [{name: "current-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Tomorrow", subpages: [{name: "tomorrow-page", duration: 8000},{name: "tomorrow-night-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "7day-page", duration: 9000}]}]
-const STANDBYMULTI = [{name: "Alerts", subpages: [{name: "multiple-alerts-page", duration: 10000}]},{name: "Now", subpages: [{name: "current-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Tomorrow", subpages:[{name: "tomorrow-page", duration: 8000},{name: "tomorrow-night-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "7day-page", duration: 9000}]}]
-const STANDBY = [{name: "Now", subpages: [{name: "current-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Tomorrow", subpages:[{name: "tomorrow-page", duration: 8000},{name: "tomorrow-night-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "7day-page", duration: 10000}]}]
+const STANDBYSINGLE = [{name: "Alert", subpages: [{name: "single-alert-page", duration: 10000}]},{name: "Now", subpages: [{name: "current-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000},{name: "tomorrow-night-page", duration: 8000},{name: "7day-page", duration: 9000}]}]
+const STANDBYMULTI = [{name: "Alerts", subpages: [{name: "multiple-alerts-page", duration: 10000}]},{name: "Now", subpages: [{name: "current-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000},{name: "tomorrow-night-page", duration: 8000},{name: "7day-page", duration: 9000}]}]
+const STANDBY = [{name: "Now", subpages: [{name: "current-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000},{name: "tomorrow-night-page", duration: 8000},{name: "7day-page", duration: 10000}]}]
 
 const jingle = new Audio("assets/music/jingle.wav");
 const crawlSpeed = 150;
@@ -260,7 +260,7 @@ function executePage(pageIndex, subPageIndex){
       setTimeout(scrollCC, currentSubPageDuration / 2);
       animateValue('cc-temperature-text', -50, currentTemperature, 2500, 1);
       animateDialFill('cc-dial-color', currentTemperature, 2500);
-      resetPositions1();
+      resetPosition.current();
       // getElement(`radar-page`).style.display = "block";
       
 /*       getElement(`tomorrow-page`).style.display = "none";
@@ -270,6 +270,7 @@ function executePage(pageIndex, subPageIndex){
       getElement(`tonight-page`).style.display = "block"; */
       break;
     case "tonight-page":
+      resetPosition.tonight();
 /*       getElement(`current-page`).style.display = "none";
       getElement(`current-page`).style.left = "101%";
 
@@ -282,6 +283,7 @@ function executePage(pageIndex, subPageIndex){
       getElement(`tomorrow-page`).style.display = "block"; */
       break;
     case "tommorow-page":
+      resetPosition.tomorrow();
 /*       getElement(`7day-page`).style.display = "block";
     
       getElement(`single-alert-page`).style.display = "none";
@@ -296,7 +298,7 @@ function executePage(pageIndex, subPageIndex){
       getElement(`tomorrow-night-page`).style.display = "block"; */
       break;
     case "7day-page":
-      resetPositions2();
+      resetPosition.outlook();
 /*       getElement(`single-alert-page`).style.display = "block";
       getElement(`multiple-alerts-page`).style.display = "block";
 
