@@ -1,13 +1,13 @@
 // Preset timeline sequences
-const MORNING = [{name: "Now", subpages: [{name: "current-page", duration: 9000}, {name: "radar-page", duration: 8000}]},{name: "Today", subpages: [{name: "today-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 10000}, {name: "7day-page", duration: 13000}]},]
-const NIGHT = [{name: "Now", subpages: [{name: "current-page", duration: 9000}, {name: "radar-page", duration: 8000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 10000}, {name: "tomorrow-night-page", duration: 10000}, {name: "7day-page", duration: 13000}]},]
-const SINGLE = [{name: "Alert", subpages: [{name: "single-alert-page", duration: 7000}]},{name: "Now", subpages: [{name: "current-page", duration: 8000}, {name: "radar-page", duration: 8000}, {name: "zoomed-radar-page", duration: 8000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000}, {name: "7day-page", duration: 13000}]},]
-const MULTIPLE = [{name: "Alerts", subpages: [{name: "multiple-alerts-page", duration: 7000}]},{name: "Now", subpages: [{name: "current-page", duration: 8000}, {name: "radar-page", duration: 8000}, {name: "zoomed-radar-page", duration: 8000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000}, {name: "7day-page", duration: 13000}]},]
+const MORNING = [{name: "Now", subpages: [{name: "current-page", duration: 9000}, {name: "radar-page", duration: 8000}]},{name: "Today", subpages: [{name: "today-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 10000}, {name: "7day-page", duration: 13000}]}]
+const NIGHT = [{name: "Now", subpages: [{name: "current-page", duration: 9000}, {name: "radar-page", duration: 8000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 10000}, {name: "tomorrow-night-page", duration: 10000}, {name: "7day-page", duration: 13000}]}]
+const SINGLE = [{name: "Alert", subpages: [{name: "single-alert-page", duration: 7000}]},{name: "Now", subpages: [{name: "current-page", duration: 8000}, {name: "radar-page", duration: 8000}, {name: "zoomed-radar-page", duration: 8000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000}, {name: "7day-page", duration: 13000}]}]
+const MULTIPLE = [{name: "Alerts", subpages: [{name: "multiple-alerts-page", duration: 7000}]},{name: "Now", subpages: [{name: "current-page", duration: 8000}, {name: "radar-page", duration: 8000}, {name: "zoomed-radar-page", duration: 8000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000}, {name: "7day-page", duration: 13000}]}]
 const WEEKDAY = ["SUN",  "MON", "TUES", "WED", "THU", "FRI", "SAT"];
 
-const STANDBYSINGLE = [{name: "Alert", subpages: [{name: "single-alert-page", duration: 10000}]},{name: "Now", subpages: [{name: "current-page", duration: 10000}, {name: "radar-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 6500},{name: "tomorrow-night-page", duration: 6500}, {name: "7day-page", duration: 7000}]},]
-const STANDBYMULTI = [{name: "Alerts", subpages: [{name: "multiple-alerts-page", duration: 10000}]},{name: "Now", subpages: [{name: "current-page", duration: 10000}, {name: "radar-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 6500},{name: "tomorrow-night-page", duration: 6500},{name: "7day-page", duration: 7000}]},]
-const STANDBY = [{name: "Now", subpages: [{name: "current-page", duration: 10000}, {name: "radar-page", duration: 15000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 7500},{name: "tomorrow-night-page", duration: 7500},{name: "7day-page", duration: 10000}]},]
+const STANDBYSINGLE = [{name: "Alert", subpages: [{name: "single-alert-page", duration: 10000}]},{name: "Now", subpages: [{name: "current-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Tomorrow", subpages: [{name: "tomorrow-page", duration: 8000},{name: "tomorrow-night-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "7day-page", duration: 9000}]}]
+const STANDBYMULTI = [{name: "Alerts", subpages: [{name: "multiple-alerts-page", duration: 10000}]},{name: "Now", subpages: [{name: "current-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Tomorrow", subpages:[{name: "tomorrow-page", duration: 8000},{name: "tomorrow-night-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "7day-page", duration: 9000}]}]
+const STANDBY = [{name: "Now", subpages: [{name: "current-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Tomorrow", subpages:[{name: "tomorrow-page", duration: 8000},{name: "tomorrow-night-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "7day-page", duration: 10000}]}]
 
 const jingle = new Audio("assets/music/jingle.wav");
 const crawlSpeed = 150;
@@ -254,69 +254,60 @@ function executePage(pageIndex, subPageIndex){
   if(isLastPage && !CONFIG.standbyMode)
     setTimeout(hideCrawl, 2000);
 
+  switch(currentSubPageName) {
+    case "current-page":
+      setTimeout(loadCC, 1000);
+      setTimeout(scrollCC, currentSubPageDuration / 2);
+      animateValue('cc-temperature-text', -50, currentTemperature, 2500, 1);
+      animateDialFill('cc-dial-color', currentTemperature, 2500);
+      resetPositions1();
+      // getElement(`radar-page`).style.display = "block";
+      
+/*       getElement(`tomorrow-page`).style.display = "none";
+      getElement(`tomorrow-page`).style.left = "101%";
+      
 
-  if(currentSubPageName == "current-page"){
-    setTimeout(loadCC, 1000);
-    setTimeout(scrollCC, currentSubPageDuration / 2);
-    animateValue('cc-temperature-text', -50, currentTemperature, 2500, 1);
-    animateDialFill('cc-dial-color', currentTemperature, 2500);
+      getElement(`tonight-page`).style.display = "block"; */
+      break;
+    case "tonight-page":
+/*       getElement(`current-page`).style.display = "none";
+      getElement(`current-page`).style.left = "101%";
 
-    getElement(`radar-page`).style.display = "block";
+      getElement(`7day-page`).style.display = "none";
+      getElement(`7day-page`).style.left = "101%";
+
+      getElement(`tomorrow-night-page`).style.display = "none";
+      getElement(`tomorrow-night-page`).style.left = "101%";
+
+      getElement(`tomorrow-page`).style.display = "block"; */
+      break;
+    case "tommorow-page":
+/*       getElement(`7day-page`).style.display = "block";
     
-    getElement(`tomorrow-page`).style.display = "none";
-    getElement(`tomorrow-page`).style.left = "101%";
+      getElement(`single-alert-page`).style.display = "none";
+      getElement(`single-alert-page`).style.left = "101%";
+  
+      getElement(`multiple-alerts-page`).style.display = "none";
+      getElement(`multiple-alerts-page`).style.left = "101%";
 
-    getElement(`tonight-page`).style.display = "none";
-    getElement(`tonight-page`).style.left = "101%";
-    
-    getElement(`tomorrow-night-page`).style.display = "none";
-    getElement(`tomorrow-night-page`).style.left = "101%";
+      getElement(`tonight-page`).style.display = "none";
+      getElement(`tonight-page`).style.left = "101%";
 
+      getElement(`tomorrow-night-page`).style.display = "block"; */
+      break;
+    case "7day-page":
+      resetPositions2();
+/*       getElement(`single-alert-page`).style.display = "block";
+      getElement(`multiple-alerts-page`).style.display = "block";
 
-  }
-  else if (currentSubPageName == 'tonight-page') {
-    getElement(`current-page`).style.display = "none";
-    getElement(`current-page`).style.left = "101%";
-    getElement(`7day-page`).style.display = "block";
-
-  }
-  else if(currentSubPageName == 'radar-page'){
-    getElement(`7day-page`).style.display = "none";
-    getElement(`7day-page`).style.left = "101%";
-    
-
-    getElement(`single-alert-page`).style.display = "none";
-    getElement(`single-alert-page`).style.left = "101%";
-
-    getElement(`multiple-alerts-page`).style.display = "none";
-    getElement(`multiple-alerts-page`).style.left = "101%";
-
-
-
-    getElement(`tonight-page`).style.display = "block";
-    getElement(`tomorrow-page`).style.display = "block";
-    getElement(`tomorrow-night-page`).style.display = "block";
-    
-    startRadar();
-  }
-  else if(currentSubPageName == 'zoomed-radar-page'){
-    startZoomedRadar();
-
-  }
-  else if(currentSubPageName == "7day-page"){
-
-
-    getElement(`single-alert-page`).style.display = "block";
-    getElement(`multiple-alerts-page`).style.display = "block";
-
-    getElement(`current-page`).style.display = "block";
-    
-    getElement(`radar-page`).style.display = "none";
-    getElement(`radar-page`).style.left = "101%";
-  } else if (currentSubPageName == "single-alert-page" || currentSubPageName == "multiple-alerts-page") {
-    getElement('timeline-event-container').style.left = "0px";
-    // getElement('progressbar').style.transitionDuration = "10001ms";
-    getElement('progressbar').style.transitionDuration = "10000ms";
+      getElement(`current-page`).style.display = "block"; */
+      break;
+    case "single-alert-page":
+    case "multiple-alerts-page":
+      getElement('timeline-event-container').style.left = "0px";
+      // getElement('progressbar').style.transitionDuration = "10001ms";
+      getElement('progressbar').style.transitionDuration = "10000ms";
+      break;
   }
 
 }

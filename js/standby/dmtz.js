@@ -24,3 +24,42 @@ function getQueryVariable(variable) {
     }
   }
   
+
+  function resetPositions1() {
+    getElement(`single-alert-page`).style.display = "block";
+    getElement(`multiple-alerts-page`).style.display = "block";
+
+    getElement(`current-page`).style.display = "block";
+
+    getElement(`tonight-page`).style.display = "block";
+
+    getElement(`tomorrow-page`).style.display = "block";
+    getElement(`tomorrow-night-page`).style.display = "block";
+
+    getElement(`7day-page`).style.display = "block";
+
+  }
+  
+  function resetPositions2() {
+    getElement(`current-page`).style.display = "none";
+    getElement(`current-page`).style.left = "101%";
+
+    getElement(`tonight-page`).style.display = "none";
+    getElement(`tonight-page`).style.left = "101%";
+
+
+    getElement(`tomorrow-page`).style.display = "none";
+    getElement(`tomorrow-page`).style.left = "101%";
+
+    getElement(`tomorrow-night-page`).style.display = "none";
+    getElement(`tomorrow-night-page`).style.left = "101%";
+
+    getElement(`single-alert-page`).style.display = "none";
+    getElement(`single-alert-page`).style.left = "101%";
+
+    getElement(`multiple-alerts-page`).style.display = "none";
+    getElement(`multiple-alerts-page`).style.left = "101%";
+
+    getElement(`7day-page`).style.display = "none";
+    getElement(`7day-page`).style.left = "101%";
+  }

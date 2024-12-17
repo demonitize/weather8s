@@ -136,7 +136,7 @@ function fetchCurrentWeather(){
             response.json().then(function(data) {
               // cityName is set in the above fetch call and not this one
               let unit = data.observation[CONFIG.unitField];
-              currentTemperature = Math.round(unit.temp);
+              currentTemperature = Math.round(unit.temp); 
               currentCondition = data.observation.phrase_32char;
               windSpeed = `${data.observation.wdir_cardinal} ${unit.wspd} ${CONFIG.units === 'm' ? 'km/h' : 'mph'}`;
               gusts = unit.gust || 'NONE';
