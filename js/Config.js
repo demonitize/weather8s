@@ -1,13 +1,13 @@
 window.CONFIG = {
-  // crawl: `Kmart News Network brought to you by The Weather Channel! Also did you know that this is a looping text box? I didn't and now I have to keep typing stuff here to make it look fuller than it actually is. Uh- So what's up with airplane food? Not funny, ok then well did you know that VRChat is adding cool shit in their beta? Well they are! Also did you know that Marcella is a stinky smelly programmer who likes kissing girls? She does, and she's REALLY GOOD at it ;) Anyways I ran out of ideas so bye bye!`,
-  crawl: `VRC Kmart wishes you and your family a Happy Holidays. The National Weather Service has not issued any alerts for your area.`,
+  crawl: `You're watching Kmart News Network! Also did you know that this is a looping text box? I didn't and now I have to keep typing stuff here to make it look fuller than it actually is. Uh- So what's up with airplane food? Not funny, ok then well did you know that VRChat is a perfect game with no bugs? Well it's not, but you already knew that didn't you! Also did you know that Marcella is a stinky smelly programmer who likes kissing girls? She does, and she's REALLY GOOD at it ;) Anyways I ran out of ideas so bye bye!`,
+  // crawl: `Funny Seasonal Message!`,
   greetings: [
     "Here's Your<br>Local Weather",
-    "Baby It's<br>Cold Outside",
+    "New Year<br>New Weather",
     "Currently In<br>Our Area",
     "Jim Cantore<br>My Beloved",
     "LDL Sold<br>Separately",
-    "JSchlatt Christmas<br>Album Goes Hard",
+    "I Promise The Weather<br>Gets Better Tomorrow",
     "Canada Isn't Real<br>Change My Mind",
     "Not So<br>IntelliSTAR",
     "If It's Raining We Become<br>The Wetter Channel",
@@ -51,8 +51,8 @@ window.CONFIG = {
     "https://i.imgur.com/unlTvYM.jpeg",
     "https://i.imgur.com/o6qkm3S.jpeg",
     "https://i.imgur.com/oryJwKg.jpeg",
-    "https://i.imgur.com/YIe8scl.jpeg",
-    "https://i.imgur.com/w223SHG.jpeg"
+    "https://i.imgur.com/YIe8scl.jpeg"
+    // "https://i.imgur.com/w223SHG.jpeg"
 
   ],
   redModeBackgrounds: [
