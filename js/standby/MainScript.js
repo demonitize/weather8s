@@ -7,7 +7,7 @@ const WEEKDAY = ["SUN",  "MON", "TUES", "WED", "THU", "FRI", "SAT"];
 
 const STANDBYSINGLE = [{name: "Alert", subpages: [{name: "single-alert-page", duration: 10000}]},{name: "Now", subpages: [{name: "current-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000},{name: "tomorrow-night-page", duration: 8000},{name: "7day-page", duration: 9000}]}]
 const STANDBYMULTI = [{name: "Alerts", subpages: [{name: "multiple-alerts-page", duration: 10000}]},{name: "Now", subpages: [{name: "current-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000},{name: "tomorrow-night-page", duration: 8000},{name: "7day-page", duration: 9000}]}]
-const STANDBY = [{name: "Now", subpages: [{name: "current-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000},{name: "tomorrow-night-page", duration: 8000},{name: "7day-page", duration: 10000}]}]
+const STANDBY = [{name: "Now", subpages: [{name: "current-page", duration: 15000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 12500}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 12500},{name: "tomorrow-night-page", duration: 12500},{name: "7day-page", duration: 12500}]}]
 
 const jingle = new Audio("assets/music/jingle.wav");
 const crawlSpeed = 150;
