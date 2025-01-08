@@ -48,10 +48,10 @@ window.CONFIG = {
     // "https://i.imgur.com/uDZEzSf.jpeg",
     // "https://i.imgur.com/J2W7c7i.jpeg",
     /* Winter Backgrounds */
-    "https://i.imgur.com/unlTvYM.jpeg",
-    "https://i.imgur.com/o6qkm3S.jpeg",
-    "https://i.imgur.com/oryJwKg.jpeg",
-    "https://i.imgur.com/YIe8scl.jpeg"
+    "assets/backgrounds/WinterBG_1.png",
+    "assets/backgrounds/WinterBG_2.png",
+    "assets/backgrounds/WinterBG_3.png",
+
     // "https://i.imgur.com/w223SHG.jpeg"
 
   ],
@@ -71,7 +71,10 @@ window.CONFIG = {
     "https://i.imgur.com/QEGOx35.jpeg",
   ],
   winterStormBackgrounds: [
-    "https://i.imgur.com/gSNIkl0.jpeg",
+    "assets/backgrounds/WinterRedBG_1.png",
+    "assets/backgrounds/WinterRedBG_1.png",
+    "assets/backgrounds/WinterRedBG_1.png",
+    // "https://i.imgur.com/gSNIkl0.jpeg",
   ],
 
   // Config Functions (index.html settings manager)
