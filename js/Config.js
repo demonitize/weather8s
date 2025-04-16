@@ -48,8 +48,8 @@ window.CONFIG = {
     // "https://i.imgur.com/uDZEzSf.jpeg",
     // "https://i.imgur.com/J2W7c7i.jpeg",
     /* Winter Backgrounds */
-    "assets/LOT8Spring2025-1.png",
-    "assets/LOT8Spring2025-2.png"
+    "assets/backgrounds/LOT8Spring2025-1.png",
+    "assets/backgrounds/LOT8Spring2025-2.png"
     // "assets/backgrounds/WinterBG_1.png",
     // "assets/backgrounds/WinterBG_2.png",
     // "assets/backgrounds/WinterBG_3.png",
