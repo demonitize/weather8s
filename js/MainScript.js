@@ -358,7 +358,7 @@ function executePage(pageIndex, subPageIndex) {
       startZoomedRadar();
       break;
     case "7day-page":
-      playOneShotVoice("assets/narrations/7DAY_DEFAULT.wav", 1);
+      playOneShotVoice("assets/narrations/7DAY_DEFAULT1.wav", 1);
       break;
   }
 }

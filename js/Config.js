@@ -48,9 +48,11 @@ window.CONFIG = {
     // "https://i.imgur.com/uDZEzSf.jpeg",
     // "https://i.imgur.com/J2W7c7i.jpeg",
     /* Winter Backgrounds */
-    "assets/backgrounds/WinterBG_1.png",
-    "assets/backgrounds/WinterBG_2.png",
-    "assets/backgrounds/WinterBG_3.png",
+    "assets/LOT8Spring2025-1.png",
+    "assets/LOT8Spring2025-2.png"
+    // "assets/backgrounds/WinterBG_1.png",
+    // "assets/backgrounds/WinterBG_2.png",
+    // "assets/backgrounds/WinterBG_3.png",
 
     // "https://i.imgur.com/w223SHG.jpeg"
 
