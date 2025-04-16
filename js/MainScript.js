@@ -142,11 +142,8 @@ function preLoadMusic() {
   // musicV2.replaceTrack(0, CONFIG.musicTracks[selectRandomArray(CONFIG.musicTracks)]);
   music = new Audio(CONFIG.musicTracks[selectRandomArray(CONFIG.musicTracks)]);
   bgd = CONFIG.mainBackgrounds[selectRandomArray(CONFIG.mainBackgrounds)];
-  // bgdRed = CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.redModeBackgrounds)];
-  bgdRed =
-    CONFIG.winterStormBackgrounds[
-      selectRandomArray(CONFIG.winterStormBackgrounds)
-    ];
+  bgdRed = CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.redModeBackgrounds)];
+  // bgdRed = CONFIG.winterStormBackgrounds[selectRandomArray(CONFIG.winterStormBackgrounds)];
   bgdSubRed =
     CONFIG.subRedModeBackgrounds[
       selectRandomArray(CONFIG.subRedModeBackgrounds)

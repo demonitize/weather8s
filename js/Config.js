@@ -58,19 +58,34 @@ window.CONFIG = {
 
   ],
   redModeBackgrounds: [
-    "https://i.imgur.com/qifw2Se.jpeg",
-    "https://i.imgur.com/mvc9y58.jpeg",
-    "https://i.imgur.com/EvPe49F.jpeg",
-    "https://i.imgur.com/eGZ4EtJ.jpeg",
+    // "https://i.imgur.com/qifw2Se.jpeg",
+    // "https://i.imgur.com/mvc9y58.jpeg",
+    // "https://i.imgur.com/EvPe49F.jpeg",
+    // "https://i.imgur.com/eGZ4EtJ.jpeg",
+    "assets/backgrounds/SevereRed1.png",
+    "assets/backgrounds/SevereRed2.png",
+    "assets/backgrounds/SevereRed3.png",
+
+    
   ],
   subRedModeBackgrounds: [
-    "https://i.imgur.com/HP5NCFW.jpeg",
-    "https://i.imgur.com/cbQPlEP.jpeg",
-    "https://i.imgur.com/oZFV8ew.jpeg",
-    "https://i.imgur.com/zI68plR.jpeg",
+    "assets/backgrounds/Severe1.png",
+    "assets/backgrounds/Severe2.png",
+    "assets/backgrounds/Severe3.png",
+
+    // "https://i.imgur.com/HP5NCFW.jpeg",
+    // "https://i.imgur.com/cbQPlEP.jpeg",
+    // "https://i.imgur.com/oZFV8ew.jpeg",
+    // "https://i.imgur.com/zI68plR.jpeg",
   ],
   hurricaneBackgrounds: [
     "https://i.imgur.com/QEGOx35.jpeg",
+    "assets/backgrounds/HurricaneRedMode.png",
+    "assets/backgrounds/HurricaneBlue.png",
+    "assets/backgrounds/HurricaneRed1.png",
+    "assets/backgrounds/HurricaneRed2.png",
+    "assets/backgrounds/HurricaneRed3.png",
+
   ],
   winterStormBackgrounds: [
     "assets/backgrounds/WinterRedBG_1.png",
