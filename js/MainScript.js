@@ -12,7 +12,7 @@ const MORNING = [
     name: "Beyond",
     subpages: [
       { name: "tomorrow-page", duration: 15000 },
-      { name: "7day-page", duration: 15000 },
+      { name: "7day-page", duration: 10000 },
     ],
   },
 ];
@@ -29,7 +29,7 @@ const NIGHT = [
     name: "Beyond",
     subpages: [
       { name: "tomorrow-night-page", duration: 15000 },
-      { name: "7day-page", duration: 15000 },
+      { name: "7day-page", duration: 10000 },
     ],
   },
 ];
@@ -42,12 +42,12 @@ const SINGLE = [
       { name: "radar-page", duration: 5000 },
     ],
   },
-  { name: "Tonight", subpages: [{ name: "tonight-page", duration: 10000 }] },
+  { name: "Tonight", subpages: [{ name: "tonight-page", duration: 8000 }] },
   {
     name: "Beyond",
     subpages: [
-      { name: "tomorrow-page", duration: 10000 },
-      { name: "tomorrow-page", duration: 10000 },
+      { name: "tomorrow-page", duration: 8000 },
+      { name: "tomorrow-page", duration: 8000 },
       { name: "7day-page", duration: 10000 },
     ],
   },
@@ -64,12 +64,12 @@ const MULTIPLE = [
       { name: "radar-page", duration: 5000 },
     ],
   },
-  { name: "Tonight", subpages: [{ name: "tonight-page", duration: 10000 }] },
+  { name: "Tonight", subpages: [{ name: "tonight-page", duration: 8000 }] },
   {
     name: "Beyond",
     subpages: [
-      { name: "tomorrow-page", duration: 10000 },
-      { name: "tomorrow-page", duration: 10000 },
+      { name: "tomorrow-page", duration: 8000 },
+      { name: "tomorrow-page", duration: 8000 },
       { name: "7day-page", duration: 10000 },
     ],
   },
@@ -92,7 +92,7 @@ var currentLogoIndex = 0;
 var pageOrder;
 
 var music = new Audio("assets/music/WX_Branding_Short.wav");
-var voice = new Audio("assets/narrations/temps/0.mp3");
+var voice = new Audio("assets/narrations/temps/0.wav");
 var bgd = "assets/backgrounds/TWC_Kmart.png";
 var bgdRed = "https://i.imgur.com/qifw2Se.jpeg";
 var bgdSubRed = "https://i.imgur.com/HP5NCFW.jpeg";
@@ -469,6 +469,7 @@ function underFuckedUpSkies(cond) {
 
     case "Fog":
     case "Foggy":
+    case "Fog/Wind":
       return `${basePath}2000.wav`;
 
     case "Tornado":
