@@ -234,8 +234,8 @@ function scheduleTimeline() {
   } else if (alerts.length > 1) {
     pageOrder = STANDBYMULTI;
   } else {
-    // pageOrder = STANDBY;
-    pageOrder = DEBUGSEQUENCE;
+    pageOrder = STANDBY;
+    // pageOrder = DEBUGSEQUENCE;
 
   }
   setInformation();
@@ -438,7 +438,7 @@ function executePage(pageIndex, subPageIndex) {
 
       getElement(`tomorrow-page`).style.display = "block"; */
       break;
-    case "tommorow-night-page":
+    case "tomorrow-night-page":
       resetPosition.tomorrow();
       /*       getElement(`7day-page`).style.display = "block";
     

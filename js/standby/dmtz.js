@@ -34,7 +34,8 @@ var resetPosition = {
     getElement(`tonight-page`).style.display = "block";
   },
   tonight() {
-    getElement(`7day-page`).style.display = "block";
+    getElement(`7day-page`).style.display = "none";
+    getElement(`7day-page`).style.left = "101%";
     getElement(`tomorrow-page`).style.display = "block";
     getElement(`tomorrow-night-page`).style.display = "block";
   },
@@ -42,8 +43,11 @@ var resetPosition = {
     getElement(`current-page`).style.display = "none";
     getElement(`current-page`).style.left = "101%";
 
-    getElement(`7day-page`).style.display = "none";
-    getElement(`7day-page`).style.left = "101%";
+    getElement(`today-page`).style.display = "none";
+    getElement(`today-page`).style.left = "101%";
+
+    getElement(`7day-page`).style.display = "block";
+
 
     getElement(`single-alert-page`).style.display = "none";
     getElement(`single-alert-page`).style.left = "101%";
@@ -54,6 +58,7 @@ var resetPosition = {
   outlook() {
     getElement(`tonight-page`).style.display = "none";
     getElement(`tonight-page`).style.left = "101%";
+    getElement(`today-page`).style.display = "block";
 
     getElement(`single-alert-page`).style.display = "block";
     getElement(`multiple-alerts-page`).style.display = "block";

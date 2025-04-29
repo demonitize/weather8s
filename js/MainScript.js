@@ -334,8 +334,15 @@ function executePage(pageIndex, subPageIndex) {
   if (isLastPage && !CONFIG.standbyMode) setTimeout(hideCrawl, 2000);
 
   switch (currentSubPageName) {
-    case "alert-page":
-    case "alerts-page":
+    case "single-alert-page":
+    case "multiple-alerts-page":
+      voice.src = alertSpeak(alerts);
+      voice.volume = 1;
+      music.volume = 0.25;
+      voice.play();
+      voice.onended = function () {
+        music.volume = 0.5;
+      };
       console.log("Voiced alerts coming Soon™");
       break;
     case "current-page":
@@ -482,40 +489,38 @@ function underFuckedUpSkies(cond) {
 
 function alertSpeak(cond) {
   let basePath = "assets/narrations/alerts/";
-  switch (cond) {
-    case "Tornado Watch":
-      return `${basePath}TO_A.wav`;
-
+  switch (cond[0]) {
     case "Tornado Warning":
       return `${basePath}TO_W.wav`;
-
-    case "Hurricane Watch":
-      return `${basePath}HU_A.wav`;
 
     case "Hurricane Warning":
       return `${basePath}HU_W.wav`;
 
-    case "Winter Storm Watch":
-      return `${basePath}WS_A.wav`;
-
     case "Winter Storm Warning":
       return `${basePath}WS_W.wav`;
-
-    case "Severe Thunderstorm Watch":
-    case "Severe Thunderstorm Warning":
-      return `${basePath}SV_A.wav`;
-
-    case "Dense Fog Advisory":
-      return `${basePath}FG_Y.wav`;
+  
+      /* Watches. Not as important */
 
     case "Flash Flood Watch":
       return `${basePath}FF_A.wav`;
-
+    
     case "Flood Watch":
       return `${basePath}FA_A.wav`;
 
-    case "Flood Advisory":
-      return `${basePath}FA_Y.wav`;
+    case "Tornado Watch":
+      return `${basePath}TO_A.wav`;
+
+    case "Severe Thunderstorm Watch":
+      return `${basePath}SV_A.wav`;
+  
+    case "Hurricane Watch":
+      return `${basePath}HU_A.wav`;
+
+    case "Winter Storm Watch":
+      return `${basePath}WS_A.wav`;
+
+    case "Dense Fog Advisory":
+      return `${basePath}FG_Y.wav`;
   }
 }
 
