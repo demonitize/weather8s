@@ -27,6 +27,7 @@ window.CONFIG = {
     /* I KNOW THIS IS A BAD IDEA. If you're going to spam my API keys, please don't. <3*/
   },
   musicTracks: [
+    /* Original Music */
     "assets/music/WX_AMHQ_1.wav",
     "assets/music/WX_AMHQ_2.wav",
     "assets/music/WX_Tomorrows_Sunrise.wav",
@@ -39,53 +40,79 @@ window.CONFIG = {
     "assets/music/WX_Wake_Up_With_Al_2.wav",
     "assets/music/WX_Weekend_Recharge_1.wav",
     "assets/music/WX_Weekend_Recharge_2.wav",
+
+    /* New Music */
+
+    "assets/music/new/1.mp3",
+    "assets/music/new/2.mp3",
+    "assets/music/new/3.mp3",
+    "assets/music/new/4.mp3",
+    "assets/music/new/5.mp3",
+    "assets/music/new/6.mp3",
+    "assets/music/new/7.mp3",
+    "assets/music/new/8.mp3",
+    "assets/music/new/9.mp3",
+    "assets/music/new/10.mp3",
+    "assets/music/new/11.mp3",
+    "assets/music/new/12.mp3",
+    "assets/music/new/13.mp3",
+    "assets/music/new/14.mp3",
+    "assets/music/new/15.mp3",
   ],
   mainBackgrounds: [
+    /* Generic Backgrounds */
     // "assets/backgrounds/TWC_Kmart.png",
     // "https://i.imgur.com/V41pDkt.jpeg",
     // "https://i.imgur.com/U5rQOJD.jpeg",
     // "https://i.imgur.com/F25Xbv3.jpeg",
     // "https://i.imgur.com/uDZEzSf.jpeg",
     // "https://i.imgur.com/J2W7c7i.jpeg",
-    /* Winter Backgrounds */
+
+    /* Spring Backgrounds */
     "assets/backgrounds/LOT8Spring2025-1.png",
     "assets/backgrounds/LOT8Spring2025-2.png"
+
+    /* Winter Backgrounds */
     // "assets/backgrounds/WinterBG_1.png",
     // "assets/backgrounds/WinterBG_2.png",
     // "assets/backgrounds/WinterBG_3.png",
 
+    /* XMas Background */
     // "https://i.imgur.com/w223SHG.jpeg"
 
   ],
   redModeBackgrounds: [
+    /* Legacy Red Mode */
     // "https://i.imgur.com/qifw2Se.jpeg",
     // "https://i.imgur.com/mvc9y58.jpeg",
     // "https://i.imgur.com/EvPe49F.jpeg",
     // "https://i.imgur.com/eGZ4EtJ.jpeg",
+
+    /* Current Red Mode */
     "assets/backgrounds/SevereRed1.png",
     "assets/backgrounds/SevereRed2.png",
     "assets/backgrounds/SevereRed3.png",
-
     
   ],
   subRedModeBackgrounds: [
-    "assets/backgrounds/Severe1.png",
-    "assets/backgrounds/Severe2.png",
-    "assets/backgrounds/Severe3.png",
-
+    /* Legacy Sub-Red Mode */
     // "https://i.imgur.com/HP5NCFW.jpeg",
     // "https://i.imgur.com/cbQPlEP.jpeg",
     // "https://i.imgur.com/oZFV8ew.jpeg",
     // "https://i.imgur.com/zI68plR.jpeg",
+
+    /* Current Red Mode */
+    "assets/backgrounds/Severe1.png",
+    "assets/backgrounds/Severe2.png",
+    "assets/backgrounds/Severe3.png",
   ],
   hurricaneBackgrounds: [
-    "https://i.imgur.com/QEGOx35.jpeg",
+    "assets/backgrounds/Hurricane_Central_i2_xD.png",
     "assets/backgrounds/HurricaneRedMode.png",
     "assets/backgrounds/HurricaneBlue.png",
     "assets/backgrounds/HurricaneRed1.png",
     "assets/backgrounds/HurricaneRed2.png",
     "assets/backgrounds/HurricaneRed3.png",
-
   ],
   winterStormBackgrounds: [
     "assets/backgrounds/WinterRedBG_1.png",

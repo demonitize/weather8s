@@ -4,15 +4,15 @@ const MORNING = [
     name: "Now",
     subpages: [
       { name: "current-page", duration: 10000 },
-      { name: "radar-page", duration: 7000 },
+      { name: "radar-page", duration: 5000 },
     ],
   },
-  { name: "Tonight", subpages: [{ name: "tonight-page", duration: 15000 }] },
+  { name: "Today", subpages: [{ name: "today-page", duration: 10000 },{ name: "tonight-page", duration: 10000 }] },
+  { name: "Tomorrow", subpages: [{ name: "tomorrow-page", duration: 10000 },{ name: "tomorrow-night-page", duration: 10000 }] },
   {
     name: "Beyond",
     subpages: [
-      { name: "tomorrow-page", duration: 15000 },
-      { name: "7day-page", duration: 10000 },
+      { name: "7day-page", duration: 5000 },
     ],
   },
 ];
@@ -21,20 +21,20 @@ const NIGHT = [
     name: "Now",
     subpages: [
       { name: "current-page", duration: 10000 },
-      { name: "radar-page", duration: 7000 },
+      { name: "radar-page", duration: 5000 },
     ],
   },
-  { name: "Tomorrow", subpages: [{ name: "tomorrow-page", duration: 15000 }] },
+  { name: "Today", subpages: [{ name: "today-page", duration: 10000 },{ name: "tonight-page", duration: 10000 }] },
+  { name: "Tomorrow", subpages: [{ name: "tomorrow-page", duration: 10000 },{ name: "tomorrow-night-page", duration: 10000 }] },
   {
     name: "Beyond",
     subpages: [
-      { name: "tomorrow-night-page", duration: 15000 },
-      { name: "7day-page", duration: 10000 },
+      { name: "7day-page", duration: 5000 },
     ],
   },
 ];
 const SINGLE = [
-  { name: "Alert", subpages: [{ name: "single-alert-page", duration: 7000 }] },
+  { name: "Alert", subpages: [{ name: "single-alert-page", duration: 5000 }] },
   {
     name: "Now",
     subpages: [
@@ -42,20 +42,20 @@ const SINGLE = [
       { name: "radar-page", duration: 5000 },
     ],
   },
-  { name: "Tonight", subpages: [{ name: "tonight-page", duration: 8000 }] },
+  { name: "Today", subpages: [{ name: "today-page", duration: 10000 },{ name: "tonight-page", duration: 10000 }] },
   {
     name: "Beyond",
     subpages: [
-      { name: "tomorrow-page", duration: 8000 },
-      { name: "tomorrow-page", duration: 8000 },
-      { name: "7day-page", duration: 10000 },
+      { name: "tomorrow-page", duration: 10000 },
+      { name: "tomorrow-night-page", duration: 5000 },
+      { name: "7day-page", duration: 5000 },
     ],
   },
 ];
 const MULTIPLE = [
   {
     name: "Alerts",
-    subpages: [{ name: "multiple-alerts-page", duration: 7000 }],
+    subpages: [{ name: "multiple-alerts-page", duration: 5000 }],
   },
   {
     name: "Now",
@@ -64,13 +64,13 @@ const MULTIPLE = [
       { name: "radar-page", duration: 5000 },
     ],
   },
-  { name: "Tonight", subpages: [{ name: "tonight-page", duration: 8000 }] },
+  { name: "Today", subpages: [{ name: "today-page", duration: 10000 },{ name: "tonight-page", duration: 10000 }] },
   {
     name: "Beyond",
     subpages: [
-      { name: "tomorrow-page", duration: 8000 },
-      { name: "tomorrow-page", duration: 8000 },
-      { name: "7day-page", duration: 10000 },
+      { name: "tomorrow-page", duration: 10000 },
+      { name: "tomorrow-night-page", duration: 5000 },
+      { name: "7day-page", duration: 5000 },
     ],
   },
 ];
@@ -94,11 +94,11 @@ var pageOrder;
 var music = new Audio("assets/music/WX_Branding_Short.wav");
 var voice = new Audio("assets/narrations/temps/0.wav");
 var bgd = "assets/backgrounds/TWC_Kmart.png";
-var bgdRed = "https://i.imgur.com/qifw2Se.jpeg";
-var bgdSubRed = "https://i.imgur.com/HP5NCFW.jpeg";
+var bgdRed = "assets/backgrounds/SevereRed1.png";
+var bgdSubRed = "assets/backgrounds/SevereRed1.png";
 
 window.onload = function () {
-  CONFIG.addOption("zip-code", "ZIP Code", "00000");
+  CONFIG.addOption("zip-code", "ZIP Code", "75201");
   CONFIG.addOption(
     "crawlText",
     "Crawl Text",

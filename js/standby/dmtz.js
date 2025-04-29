@@ -5,7 +5,7 @@ function checkStandbyMode() {
   // getElement('background-image').style.backgroundImage = `url('assets/backgrounds/TWC_Kmart.png')`;
   getElement(
     "background-image"
-  ).style.backgroundImage = `url('${CONFIG.winterStormBackgrounds[0]}')`;
+  ).style.backgroundImage = `url('${CONFIG.mainBackgrounds[0]}')`;
 }
 
 function getQueryVariable(variable) {

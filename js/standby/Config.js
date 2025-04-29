@@ -1,7 +1,7 @@
 window.CONFIG = {
-    crawl: `You're watching Kmart News Network! Also did you know that this is a looping text box? I didn't and now I have to keep typing stuff here to make it look fuller than it actually is. Uh- So what's up with airplane food? Not funny, ok then well did you know that VRChat is a perfect game with no bugs? Well it's not, but you already knew that didn't you! Also did you know that Marcella is a stinky smelly programmer who likes kissing girls? She does, and she's REALLY GOOD at it ;) Anyways I ran out of ideas so bye bye!`,
+    crawl: ``,
     // crawl: `Funny Seasonal Message!`,
-    greeting: `Emergency Feed<br>Go BRRRRRRR`,
+    greeting: `Currently Cueing domestic/Z<br>but cutely`,
     language: 'en-US', // Supported in TWC API
     countryCode: 'US', // Supported in TWC API (for postal key)
     units: 'e', // Supported in TWC API (e = English (imperial), m = Metric, h = Hybrid (UK)),
@@ -16,51 +16,67 @@ window.CONFIG = {
       /* I KNOW THIS IS A BAD IDEA. If you're going to spam my API keys, please don't. <3*/
     },
     musicTracks: [
-      "assets/music/WX_AMHQ_1.wav",
-      "assets/music/WX_AMHQ_2.wav",
-      "assets/music/WX_Tomorrows_Sunrise.wav",
       "assets/music/WX_Branding_Short.wav",
-      "assets/music/WX_Clouds_May_Come.wav",
-      "assets/music/WX_Song_6.wav",
-      "assets/music/WX_Song_7.wav",
-      "assets/music/WX_Song_11.wav",
-      "assets/music/WX_Wake_Up_With_Al_1.wav",
-      "assets/music/WX_Wake_Up_With_Al_2.wav",
-      "assets/music/WX_Weekend_Recharge_1.wav",
-      "assets/music/WX_Weekend_Recharge_2.wav",
     ],
     mainBackgrounds: [
-      // "assets/backgrounds/TWC_Kmart.png",
-      // "https://i.imgur.com/V41pDkt.jpeg",
-      // "https://i.imgur.com/U5rQOJD.jpeg",
-      // "https://i.imgur.com/F25Xbv3.jpeg",
-      // "https://i.imgur.com/uDZEzSf.jpeg",
-      // "https://i.imgur.com/J2W7c7i.jpeg",
-      /* Winter Backgrounds */
-      "https://i.imgur.com/unlTvYM.jpeg",
-      "https://i.imgur.com/o6qkm3S.jpeg",
-      "https://i.imgur.com/oryJwKg.jpeg",
-      "https://i.imgur.com/YIe8scl.jpeg"
-      // "https://i.imgur.com/w223SHG.jpeg"
-  
+/* Generic Backgrounds */
+    "assets/backgrounds/TWC_Kmart.png",
+    // "https://i.imgur.com/V41pDkt.jpeg",
+    // "https://i.imgur.com/U5rQOJD.jpeg",
+    // "https://i.imgur.com/F25Xbv3.jpeg",
+    // "https://i.imgur.com/uDZEzSf.jpeg",
+    // "https://i.imgur.com/J2W7c7i.jpeg",
+
+    /* Spring Backgrounds */
+    // "assets/backgrounds/LOT8Spring2025-1.png",
+    // "assets/backgrounds/LOT8Spring2025-2.png"
+
+    /* Winter Backgrounds */
+    // "assets/backgrounds/WinterBG_1.png",
+    // "assets/backgrounds/WinterBG_2.png",
+    // "assets/backgrounds/WinterBG_3.png",
+
+    /* XMas Background */
+    // "https://i.imgur.com/w223SHG.jpeg"
     ],
     redModeBackgrounds: [
-      "https://i.imgur.com/qifw2Se.jpeg",
-      "https://i.imgur.com/mvc9y58.jpeg",
-      "https://i.imgur.com/EvPe49F.jpeg",
-      "https://i.imgur.com/eGZ4EtJ.jpeg",
+      /* Legacy Red Mode */
+      // "https://i.imgur.com/qifw2Se.jpeg",
+      // "https://i.imgur.com/mvc9y58.jpeg",
+      // "https://i.imgur.com/EvPe49F.jpeg",
+      // "https://i.imgur.com/eGZ4EtJ.jpeg",
+  
+      /* Current Red Mode */
+      "assets/backgrounds/SevereRed1.png",
+      "assets/backgrounds/SevereRed2.png",
+      "assets/backgrounds/SevereRed3.png",
+      
     ],
     subRedModeBackgrounds: [
-      "https://i.imgur.com/HP5NCFW.jpeg",
-      "https://i.imgur.com/cbQPlEP.jpeg",
-      "https://i.imgur.com/oZFV8ew.jpeg",
-      "https://i.imgur.com/zI68plR.jpeg",
+      /* Legacy Sub-Red Mode */
+      // "https://i.imgur.com/HP5NCFW.jpeg",
+      // "https://i.imgur.com/cbQPlEP.jpeg",
+      // "https://i.imgur.com/oZFV8ew.jpeg",
+      // "https://i.imgur.com/zI68plR.jpeg",
+  
+      /* Current Red Mode */
+      "assets/backgrounds/Severe1.png",
+      "assets/backgrounds/Severe2.png",
+      "assets/backgrounds/Severe3.png",
     ],
     hurricaneBackgrounds: [
-      "https://i.imgur.com/QEGOx35.jpeg",
+      "assets/backgrounds/Hurricane_Central_i2_xD.png",
+      "assets/backgrounds/HurricaneRedMode.png",
+      "assets/backgrounds/HurricaneBlue.png",
+      "assets/backgrounds/HurricaneRed1.png",
+      "assets/backgrounds/HurricaneRed2.png",
+      "assets/backgrounds/HurricaneRed3.png",
     ],
     winterStormBackgrounds: [
-      "https://i.imgur.com/gSNIkl0.jpeg",
+      "assets/backgrounds/WinterRedBG_1.png",
+      "assets/backgrounds/WinterRedBG_1.png",
+      "assets/backgrounds/WinterRedBG_1.png",
+      // "https://i.imgur.com/gSNIkl0.jpeg",
     ],
   
     // Config Functions (index.html settings manager)
