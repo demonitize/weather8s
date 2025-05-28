@@ -70,8 +70,8 @@ window.CONFIG = {
 
     /* Spring Backgrounds */
     "assets/backgrounds/LOT8Spring2025-1.png",
-    "assets/backgrounds/LOT8Spring2025-2.png"
-
+    "assets/backgrounds/LOT8Spring2025-2.png",
+    "assets/backgrounds/FreakyChannel.png",
     /* Winter Backgrounds */
     // "assets/backgrounds/WinterBG_1.png",
     // "assets/backgrounds/WinterBG_2.png",
@@ -92,6 +92,7 @@ window.CONFIG = {
     "assets/backgrounds/SevereRed1.png",
     "assets/backgrounds/SevereRed2.png",
     "assets/backgrounds/SevereRed3.png",
+    "assets/backgrounds/FreakyChannelRed.png",
     
   ],
   subRedModeBackgrounds: [
@@ -105,6 +106,7 @@ window.CONFIG = {
     "assets/backgrounds/Severe1.png",
     "assets/backgrounds/Severe2.png",
     "assets/backgrounds/Severe3.png",
+    "assets/backgrounds/FreakyChannelRed.png",
   ],
   hurricaneBackgrounds: [
     "assets/backgrounds/Hurricane_Central_i2_xD.png",

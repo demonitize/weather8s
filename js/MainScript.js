@@ -115,7 +115,7 @@ window.onload = function () {
   resizeWindow();
   setClockTime();
   checkStandbyMode();
-  if (!CONFIG.loop && !CONFIG.standbyMode) {
+  if (!CONFIG.loop && !CONFIG.standbyMode && getQueryVariable(`autorun`) == 'false') {
     getElement("settings-container").style.display = "block";
     guessZipCode();
   }
