@@ -31,3 +31,66 @@ function getQueryVariable(variable) {
     console.warn(err);
   }
 }
+
+function alertPriority(alerts) {
+  let basePath = "assets/narrations/alerts/";
+  let outArr = [];
+  alerts.forEach((elem, index) => {
+    switch (elem) {
+      case "Dense Fog Advisory":
+        outArr.push({ priority: 0, file: `${basePath}/FG_Y.wav` });
+        break;
+
+      case "Winter Storm Watch":
+        outArr.push({ priority: 1, file: `${basePath}/WS_A.wav` });
+        break;
+
+      case "Flood Watch":
+        outArr.push({ priority: 2, file: `${basePath}/FA_A.wav` });
+        break;
+
+      case "Hurricane Watch":
+        outArr.push({ priority: 3, file: `${basePath}/HU_A.wav` });
+        break;
+
+      case "Flash Flood Watch":
+        outArr.push({ priority: 4, file: `${basePath}/FF_A.wav` });
+        break;
+
+      case "Severe Thunderstorm Watch":
+        outArr.push({ priority: 5, file: `${basePath}/SV_A.wav` });
+        break;
+
+      case "Tornado Watch":
+        outArr.push({ priority: 6, file: `${basePath}/TO_A.wav` });
+        break;
+
+      case "Winter Storm Warning":
+        outArr.push({ priority: 7, file: `${basePath}/WS_W.wav` });
+        break;
+
+      case "Hurricane Warning":
+        outArr.push({ priority: 8, file: `${basePath}/HU_W.wav` });
+        break;
+
+      case "Severe Thunderstorm Warning":
+        outArr.push({ priority: 9, file: `${basePath}/0_SVW.wav` });
+        break;
+
+      case "Flash Flood Warning":
+        outArr.push({ priority: 10, file: `${basePath}/0_FFW.wav` });
+        break;
+
+      case "Tornado Warning":
+        outArr.push({ priority: 11, file: `${basePath}/TO_W.wav` });
+        break;
+      default:
+        return false;
+    }
+  });
+  let playedAlert = -1;
+  outArr.forEach((elem, index) => {
+    if (elem.priority > playedAlert) playedAlert = index;
+  });
+  return outArr[playedAlert]["file"];
+}

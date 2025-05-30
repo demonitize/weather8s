@@ -1,5 +1,5 @@
 window.CONFIG = {
-  crawl: `You're watching Kmart News Network! Also did you know that this is a looping text box? I didn't and now I have to keep typing stuff here to make it look fuller than it actually is. Uh- So what's up with airplane food? Not funny, ok then well did you know that VRChat is a perfect game with no bugs? Well it's not, but you already knew that didn't you! Also did you know that Marcella is a stinky smelly programmer who likes kissing girls? She does, and she's REALLY GOOD at it ;) Anyways I ran out of ideas so bye bye!`,
+  crawl: `You're watching Kmart News Network! The Weather Channel is America's #1 Weather Network. Trusted. Reliable. Accurate.`,
   // crawl: `Funny Seasonal Message!`,
   greetings: [
     "Here's Your<br>Local Weather",
@@ -11,7 +11,24 @@ window.CONFIG = {
     "Canada Isn't Real<br>Change My Mind",
     "Not So<br>IntelliSTAR",
     "If It's Raining We Become<br>The Wetter Channel",
-    "A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning"
+    "A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning",
+    "OOPS!<br>All Weather.",
+    "Who Knew Forecasting<br>Was So Fun?",
+    "Now Cueing<br>domestic/azul",
+    "Here's Our<br>Seven!",
+    "Powered By<br>Magic™",
+    "Trans Rights<br>Are Human Rights",
+    "This Forecast is<br>Skibidi Rizz Fanum Tax",
+    "Look Ma!<br>I'm On TV!",
+    "Would You Like<br>A Free Storm?",
+    "I Like My Eggs<br>Sunny Side Up",
+    "Roses are Red, Violets are Blue<br>Here's Your Weather, Now STFU",
+    "IT'S RAINING MEN<br>HALLELUJAH",
+    "Put The Weather<br>In The Bag!",
+    "Insert Joke Here<br>Bottom Text",
+    "Can We Have Hatsune Miku<br>Host The Weather Channel?",
+    "No Mom,<br>We're Not There Yet",
+    "The Damn Weather<br>Machine Broke Again"
   ],
   language: 'en-US', // Supported in TWC API
   countryCode: 'US', // Supported in TWC API (for postal key)

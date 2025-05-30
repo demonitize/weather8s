@@ -115,7 +115,7 @@ window.onload = function () {
   resizeWindow();
   setClockTime();
   checkStandbyMode();
-  if (!CONFIG.loop && !CONFIG.standbyMode && getQueryVariable(`autorun`) == 'false') {
+  if (!CONFIG.loop && !CONFIG.standbyMode && getQueryVariable(`autorun`) != 'true') {
     getElement("settings-container").style.display = "block";
     guessZipCode();
   }
@@ -336,7 +336,7 @@ function executePage(pageIndex, subPageIndex) {
   switch (currentSubPageName) {
     case "single-alert-page":
     case "multiple-alerts-page":
-      voice.src = alertSpeak(alerts);
+      voice.src = alertPriority(alerts);
       voice.volume = 1;
       music.volume = 0.25;
       voice.play();
@@ -399,6 +399,9 @@ function playCurrentConditionsVoice(
       voice.src = underFuckedUpSkies(currentCondition);
       voice.volume = volCond;
       voice.play();
+      voice.onerror = function () {
+        music.volume = 0.5;
+      }
       voice.onended = function () {
         music.volume = 0.5;
       };
@@ -484,43 +487,6 @@ function underFuckedUpSkies(cond) {
 
     case "Funnel Cloud":
       return `${basePath}428.wav`;
-  }
-}
-
-function alertSpeak(cond) {
-  let basePath = "assets/narrations/alerts/";
-  switch (cond[0]) {
-    case "Tornado Warning":
-      return `${basePath}TO_W.wav`;
-
-    case "Hurricane Warning":
-      return `${basePath}HU_W.wav`;
-
-    case "Winter Storm Warning":
-      return `${basePath}WS_W.wav`;
-  
-      /* Watches. Not as important */
-
-    case "Flash Flood Watch":
-      return `${basePath}FF_A.wav`;
-    
-    case "Flood Watch":
-      return `${basePath}FA_A.wav`;
-
-    case "Tornado Watch":
-      return `${basePath}TO_A.wav`;
-
-    case "Severe Thunderstorm Watch":
-      return `${basePath}SV_A.wav`;
-  
-    case "Hurricane Watch":
-      return `${basePath}HU_A.wav`;
-
-    case "Winter Storm Watch":
-      return `${basePath}WS_A.wav`;
-
-    case "Dense Fog Advisory":
-      return `${basePath}FG_Y.wav`;
   }
 }
 
@@ -659,6 +625,12 @@ function clearEnd() {
   // Reload the page after animation has completed
   // If looping is enabled, the sequence will start again
   // Otherwise, the zip code prompt will show again
+  if (getQueryVariable("obs") == "true") {
+    setTimeout(() => {
+      window.obsstudio.setCurrentScene(getQueryVariable("endScene"));
+      reloadPage();
+    }, 400);
+  }
   if (!CONFIG.loop && !CONFIG.standbyMode) setTimeout(reloadPage, 400);
   // CONFIG.submit();
 }
