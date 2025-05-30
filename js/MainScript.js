@@ -684,7 +684,7 @@ function loadInfoBar() {
 
 function setClockTime() {
   var now = new Date(
-    new Date().toLocaleString("en-US", { timeZone: fetchTWCUserLocation() })
+    new Date().toLocaleString("en-US", { timeZone: timeZone })
   );
   const hours = now.getHours();
   const minutes = now.getMinutes().toString().padStart(2, "0");
@@ -829,7 +829,7 @@ function showCrawl() {
 function hideCrawl() {
   getElement("crawler-container").classList.add("hidden");
   getElement("crawl-text").classList.remove("animate");
-  setTimeout(getElement("crawler-container").style.display = "none", 5000);
+  setTimeout(() => getElement("crawler-container").style.display = "none", 2000);
 }
 
 function startCrawl() {

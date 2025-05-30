@@ -4,6 +4,8 @@ var cityName;
 var longitude;
 var latitude;
 
+var timeZone;
+
 var currentTemperature;
 var currentIcon;
 var currentCondition;

@@ -142,6 +142,7 @@ function fetchCurrentWeather() {
         cityName = data.location.displayName.toUpperCase();
         latitude = data.location.latitude;
         longitude = data.location.longitude;
+        timeZone = data.location.ianaTimeZone;
       } catch (err) {
         alert("Enter valid ZIP code");
         console.error(err);
@@ -385,17 +386,4 @@ function fetchRadarImages() {
     });
 
   scheduleTimeline();
-}
-
-function fetchTWCUserLocation() {
-  try {
-    const data = cachedFetch(
-      `https://api.weather.com/v3/location/search?query=${latitude},${longitude}&language=en-US&format=json&apiKey=${CONFIG.secrets.twcAPIKey}`
-    );
-    return data.location.ianaTimeZone[0].toString();
-  } catch (error) {
-    // console.error("Failed to fetch TWC user location:", error);
-    // Return a fallback object instead of null
-    return "America/New_York";
-  }
 }
