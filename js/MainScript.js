@@ -7,13 +7,23 @@ const MORNING = [
       { name: "radar-page", duration: 5000 },
     ],
   },
-  { name: "Today", subpages: [{ name: "today-page", duration: 10000 },{ name: "tonight-page", duration: 10000 }] },
-  { name: "Tomorrow", subpages: [{ name: "tomorrow-page", duration: 10000 },{ name: "tomorrow-night-page", duration: 10000 }] },
+  {
+    name: "Today",
+    subpages: [
+      { name: "today-page", duration: 10000 },
+      { name: "tonight-page", duration: 10000 },
+    ],
+  },
+  {
+    name: "Tomorrow",
+    subpages: [
+      { name: "tomorrow-page", duration: 10000 },
+      { name: "tomorrow-night-page", duration: 10000 },
+    ],
+  },
   {
     name: "Beyond",
-    subpages: [
-      { name: "7day-page", duration: 5000 },
-    ],
+    subpages: [{ name: "7day-page", duration: 5000 }],
   },
 ];
 const NIGHT = [
@@ -24,13 +34,23 @@ const NIGHT = [
       { name: "radar-page", duration: 5000 },
     ],
   },
-  { name: "Today", subpages: [{ name: "today-page", duration: 10000 },{ name: "tonight-page", duration: 10000 }] },
-  { name: "Tomorrow", subpages: [{ name: "tomorrow-page", duration: 10000 },{ name: "tomorrow-night-page", duration: 10000 }] },
+  {
+    name: "Today",
+    subpages: [
+      { name: "today-page", duration: 10000 },
+      { name: "tonight-page", duration: 10000 },
+    ],
+  },
+  {
+    name: "Tomorrow",
+    subpages: [
+      { name: "tomorrow-page", duration: 10000 },
+      { name: "tomorrow-night-page", duration: 10000 },
+    ],
+  },
   {
     name: "Beyond",
-    subpages: [
-      { name: "7day-page", duration: 5000 },
-    ],
+    subpages: [{ name: "7day-page", duration: 5000 }],
   },
 ];
 const SINGLE = [
@@ -42,7 +62,13 @@ const SINGLE = [
       { name: "radar-page", duration: 5000 },
     ],
   },
-  { name: "Today", subpages: [{ name: "today-page", duration: 10000 },{ name: "tonight-page", duration: 10000 }] },
+  {
+    name: "Today",
+    subpages: [
+      { name: "today-page", duration: 10000 },
+      { name: "tonight-page", duration: 10000 },
+    ],
+  },
   {
     name: "Beyond",
     subpages: [
@@ -64,7 +90,13 @@ const MULTIPLE = [
       { name: "radar-page", duration: 5000 },
     ],
   },
-  { name: "Today", subpages: [{ name: "today-page", duration: 10000 },{ name: "tonight-page", duration: 10000 }] },
+  {
+    name: "Today",
+    subpages: [
+      { name: "today-page", duration: 10000 },
+      { name: "tonight-page", duration: 10000 },
+    ],
+  },
   {
     name: "Beyond",
     subpages: [
@@ -113,9 +145,12 @@ window.onload = function () {
   preLoadMusic();
   setMainBackground();
   resizeWindow();
-  setClockTime();
   checkStandbyMode();
-  if (!CONFIG.loop && !CONFIG.standbyMode && getQueryVariable(`autorun`) != 'true') {
+  if (
+    !CONFIG.loop &&
+    !CONFIG.standbyMode &&
+    getQueryVariable(`autorun`) != "true"
+  ) {
     getElement("settings-container").style.display = "block";
     guessZipCode();
   }
@@ -142,7 +177,8 @@ function preLoadMusic() {
   // musicV2.replaceTrack(0, CONFIG.musicTracks[selectRandomArray(CONFIG.musicTracks)]);
   music = new Audio(CONFIG.musicTracks[selectRandomArray(CONFIG.musicTracks)]);
   bgd = CONFIG.mainBackgrounds[selectRandomArray(CONFIG.mainBackgrounds)];
-  bgdRed = CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.redModeBackgrounds)];
+  bgdRed =
+    CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.redModeBackgrounds)];
   // bgdRed = CONFIG.winterStormBackgrounds[selectRandomArray(CONFIG.winterStormBackgrounds)];
   bgdSubRed =
     CONFIG.subRedModeBackgrounds[
@@ -189,6 +225,7 @@ function revealTimeline() {
 the appropriate elements */
 function setInformation() {
   setGreetingPage();
+    setClockTime(); 
   checkStormMusic();
   setAlertPage();
   setForecast();
@@ -401,7 +438,7 @@ function playCurrentConditionsVoice(
       voice.play();
       voice.onerror = function () {
         music.volume = 0.5;
-      }
+      };
       voice.onended = function () {
         music.volume = 0.5;
       };
@@ -646,23 +683,17 @@ function loadInfoBar() {
 }
 
 function setClockTime() {
-  var currentTime = new Date();
-  var diem = "AM";
-  var h = currentTime.getHours();
-  var m = currentTime.getMinutes();
+  var now = new Date(
+    new Date().toLocaleString("en-US", { timeZone: fetchTWCUserLocation() })
+  );
+  const hours = now.getHours();
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  const ampm = hours >= 12 ? "PM" : "AM";
+  const formattedHours = (hours % 12 || 12).toString().padStart(2, "0");
 
-  if (h == 0) {
-    h = 12;
-  } else if (h > 12) {
-    h = h - 12;
-    diem = "PM";
-  }
-  if (m < 10) {
-    m = "0" + m;
-  }
+  const timeString = `${formattedHours}:${minutes}`;
 
-  var finalString = h + ":" + m;
-  getElement("infobar-time-text").innerHTML = finalString;
+  getElement("infobar-time-text").innerHTML = timeString;
 
   // Refresh clock every 1 second
   setTimeout(setClockTime, 1000);

@@ -94,3 +94,34 @@ function alertPriority(alerts) {
   });
   return outArr[playedAlert]["file"];
 }
+
+const apiCache = new Map();
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
+async function cachedFetch(url, options = {}) {
+    const cacheKey = url, now = Date.now();
+    const cached = apiCache.get(cacheKey);
+    if (cached && (now - cached.timestamp < CACHE_TTL)) {
+        return cached.data;
+    }
+    let attempts = 0, maxAttempts = 3;
+    while (attempts < maxAttempts) {
+        try {
+            const res = await fetch(url, options);
+            if (res.ok) {
+                const data = await res.json();
+                apiCache.set(cacheKey, { timestamp: now, data });
+                return data;
+            }
+            attempts++;
+            await new Promise(r => setTimeout(r, 1000 * attempts));
+        } catch (e) {
+            attempts++;
+            if (attempts === maxAttempts) throw e;
+            await new Promise(r => setTimeout(r, 1000 * attempts));
+        }
+    }
+    if (cached) return cached.data;
+    throw new Error(`Failed to fetch ${url}`);
+}
+
