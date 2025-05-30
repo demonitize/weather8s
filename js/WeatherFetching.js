@@ -394,7 +394,7 @@ function fetchTWCUserLocation() {
     );
     return data.location.ianaTimeZone[0].toString();
   } catch (error) {
-    console.error("Failed to fetch TWC user location:", error);
+    // console.error("Failed to fetch TWC user location:", error);
     // Return a fallback object instead of null
     return "America/New_York";
   }

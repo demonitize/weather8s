@@ -828,11 +828,15 @@ function showCrawl() {
 
 function hideCrawl() {
   getElement("crawler-container").classList.add("hidden");
+  getElement("crawl-text").classList.remove("animate");
+  setTimeout(getElement("crawler-container").style.display = "none", 5000);
 }
 
 function startCrawl() {
   calculateCrawlSpeed();
   getElement("crawl-text").classList.add("animate");
+  let killCrawlTime = getElement("crawl-text").style.animationDuration.replace("s", "") * 1000;
+  setTimeout(hideCrawl, killCrawlTime);
 }
 
 function calculateCrawlSpeed() {
