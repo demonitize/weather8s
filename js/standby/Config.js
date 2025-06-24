@@ -1,7 +1,35 @@
 window.CONFIG = {
-    crawl: ``,
+    crawl: `You're watching Kmart News Network! The Weather Channel is America's #1 Weather Network. Trusted. Reliable. Accurate.`,
     // crawl: `Funny Seasonal Message!`,
-    greeting: `Currently Cueing domestic/Z<br>but cutely`,
+  greetings: [
+    "Here's Your<br>Local Weather",
+    "Currently In<br>Our Area",
+    "Jim Cantore<br>My Beloved",
+    "LDL Sold<br>Separately",
+    "I Promise The Weather<br>Gets Better Tomorrow",
+    "Canada Isn't Real<br>Change My Mind",
+    "Not So<br>IntelliSTAR",
+    "If It's Raining We Become<br>The Wetter Channel",
+    "A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning",
+    "OOPS!<br>All Weather.",
+    "Who Knew Forecasting<br>Was So Fun?",
+    "Now Cueing<br>domestic/azul",
+    "Here's Our<br>Seven!",
+    "Powered By<br>Magic™",
+    "Trans Rights<br>Are Human Rights",
+    "This Forecast is<br>Skibidi Rizz Fanum Tax",
+    "Look Ma!<br>I'm On TV!",
+    "Would You Like<br>A Free Storm?",
+    "I Like My Eggs<br>Sunny Side Up",
+    "Roses are Red, Violets are Blue<br>Here's Your Weather, Now STFU",
+    "IT'S RAINING MEN<br>HALLELUJAH",
+    "Put The Weather<br>In The Bag!",
+    "Insert Joke Here<br>Bottom Text",
+    "Can We Have Hatsune Miku<br>Host The Weather Channel?",
+    "No Mom,<br>We're Not There Yet",
+    "The Damn Weather<br>Machine Broke Again",
+    "Please Stop Putting The<br>Weather Machine On Seven",
+  ],    
     language: 'en-US', // Supported in TWC API
     countryCode: 'US', // Supported in TWC API (for postal key)
     units: 'e', // Supported in TWC API (e = English (imperial), m = Metric, h = Hybrid (UK)),
@@ -95,7 +123,7 @@ window.CONFIG = {
         localStorage.setItem(opt.id, args[opt.id])
       })
       if (args.crawlText !== '') CONFIG.crawl = args.crawlText
-      if (args.greetingText !== '') CONFIG.greeting = args.greetingText
+      if (args.greetingText !== '') CONFIG.greetings[selectRandomArray(CONFIG.greetings)] = args.greetingText
       if (args.loop === 'y') CONFIG.loop = true
       if (getQueryVariable(`zip`) != false) {
         zipCode = getQueryVariable(`zip`);

@@ -267,9 +267,6 @@ function setInformation() {
   setTimeout(startAnimation, 1000);
 }
 
-function selectRandomArray(arr) {
-  return Math.floor(Math.random() * arr.length);
-}
 function setMainBackground() {
   getElement("background-image").style.backgroundImage = `url(${bgd})`;
 }
@@ -899,6 +896,8 @@ function hideCrawl() {
 function startCrawl() {
   calculateCrawlSpeed();
   getElement("crawl-text").classList.add("animate");
+  let killCrawlTime = getElement("crawl-text").style.animationDuration.replace("s", "") * 1000;
+  setTimeout(hideCrawl, killCrawlTime);
 }
 
 function calculateCrawlSpeed() {

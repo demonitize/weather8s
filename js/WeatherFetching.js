@@ -368,7 +368,7 @@ function fetchRadarImages() {
           radarImage.onerror = function () {
             getElement("radar-container").style.display = "none";
           };
-          radarImage.src = `https://radar.weather.gov/ridge/standard/base_velocity/${radarStation}_loop.gif`;
+          radarImage.src = `https://radar.weather.gov/ridge/standard/standard/${radarStation}_loop.gif`;
           getElement("radar-container").style["textAlign"] = "center";
           if (alertsActive) {
             zoomedRadarImage = new Image();

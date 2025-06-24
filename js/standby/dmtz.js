@@ -66,3 +66,8 @@ var resetPosition = {
     getElement(`current-page`).style.display = "block";
   },
 };
+
+
+function selectRandomArray(arr) {
+  return Math.floor(Math.random() * arr.length);
+}

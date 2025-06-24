@@ -177,8 +177,9 @@ function preLoadMusic() {
   // musicV2.replaceTrack(0, CONFIG.musicTracks[selectRandomArray(CONFIG.musicTracks)]);
   music = new Audio(CONFIG.musicTracks[selectRandomArray(CONFIG.musicTracks)]);
   bgd = CONFIG.mainBackgrounds[selectRandomArray(CONFIG.mainBackgrounds)];
-  bgdRed =
-    CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.redModeBackgrounds)];
+  // bgdRed = CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.redModeBackgrounds)];
+
+  bgdRed = CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.hurricaneBackgrounds)];
   // bgdRed = CONFIG.winterStormBackgrounds[selectRandomArray(CONFIG.winterStormBackgrounds)];
   bgdSubRed =
     CONFIG.subRedModeBackgrounds[
@@ -238,9 +239,6 @@ function setInformation() {
   setTimeout(startAnimation, 1000);
 }
 
-function selectRandomArray(arr) {
-  return Math.floor(Math.random() * arr.length);
-}
 function setMainBackground() {
   getElement("background-image").style.backgroundImage = `url(${bgd})`;
 }
@@ -255,12 +253,18 @@ function checkStormMusic() {
     majorStorm.test(alerts)
   ) {
     music = new Audio("assets/music/storm.wav");
-    // musicV2.replaceTrack(0, "assets/music/storm.wav");
     getElement("background-image").style.backgroundImage = `url(${bgdRed})`;
+
+    if (getQueryVariable("redTransition") != false) {
+      window.obsstudio.setCurrentTransition(getQueryVariable("redTransition"))
+    }
   } else if (minorStorm.test(alerts)) {
     music = new Audio("assets/music/MinorStormAlert.wav");
-    // musicV2.replaceTrack(0, "assets/music/MinorStormAlert.wav");
     getElement("background-image").style.backgroundImage = `url(${bgdSubRed})`;
+
+    if (getQueryVariable("redTransition") != false) {
+      window.obsstudio.setCurrentTransition(getQueryVariable("redTransition"))
+    }
   }
 }
 
@@ -446,87 +450,6 @@ function playCurrentConditionsVoice(
   };
 }
 
-/* I know this is a terrible way to do this, but i honestly don't give a fuck -- demonitized */
-function underFuckedUpSkies(cond) {
-  let basePath = "assets/narrations/cc/";
-  switch (cond) {
-    case "Fair":
-      return `${basePath}3400.wav`;
-
-    case "Sunny":
-      return `${basePath}3200.wav`;
-
-    case "Clear":
-      return `${basePath}3100.wav`;
-
-    case "Showers":
-      return `${basePath}2680.wav`;
-
-    case "Light Drizzle":
-      return `${basePath}901.wav`;
-
-    case "Drizzle":
-      return `${basePath}900.wav`;
-
-    case "Light Rain":
-      return `${basePath}1101.wav`;
-
-    case "Rain":
-    case "Rain Shower":
-      return `${basePath}1200.wav`;
-
-    case "Heavy Rain":
-      return `${basePath}1102.wav`;
-
-    case "Thunder":
-    case "Thunderstorm":
-      return `${basePath}400.wav`;
-
-    case "Heavy Thunder":
-    case "Heavy Thunderstorm":
-      return `${basePath}402.wav`;
-
-    case "Strong Thunder":
-    case "Strong Thunderstorm":
-      return `${basePath}422.wav`;
-
-    case "Light Snow":
-      return `${basePath}1601.wav`;
-
-    case "Snow":
-      return `${basePath}1600.wav`;
-
-    case "Heavy Snow":
-      return `${basePath}1402.wav`;
-
-    case "Partly Cloudy":
-      return `${basePath}2900.wav`;
-
-    case "Cloudy":
-      return `${basePath}2600.wav`;
-
-    case "Mostly Cloudy":
-      return `${basePath}2700.wav`;
-
-    case "Hazy":
-      return `${basePath}2100.wav`;
-
-    case "Smokey":
-      return `${basePath}2200.wav`;
-
-    case "Fog":
-    case "Foggy":
-    case "Fog/Wind":
-      return `${basePath}2000.wav`;
-
-    case "Tornado":
-      return `${basePath}423.wav`;
-
-    case "Funnel Cloud":
-      return `${basePath}428.wav`;
-  }
-}
-
 function clearPage(pageIndex, subPageIndex) {
   var currentPage = pageOrder[pageIndex];
   var currentSubPageName = currentPage.subpages[subPageIndex].name;
@@ -662,7 +585,7 @@ function clearEnd() {
   // Reload the page after animation has completed
   // If looping is enabled, the sequence will start again
   // Otherwise, the zip code prompt will show again
-  if (getQueryVariable("obs") == "true") {
+  if (getQueryVariable("endScene") != false) {
     setTimeout(() => {
       window.obsstudio.setCurrentScene(getQueryVariable("endScene"));
       reloadPage();

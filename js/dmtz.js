@@ -125,3 +125,88 @@ async function cachedFetch(url, options = {}) {
     throw new Error(`Failed to fetch ${url}`);
 }
 
+function selectRandomArray(arr) {
+  return Math.floor(Math.random() * arr.length);
+}
+
+/* I know this is a terrible way to do this, but i honestly don't give a fuck -- demonitized */
+function underFuckedUpSkies(cond) {
+  let basePath = "assets/narrations/cc/";
+  switch (cond) {
+    case "Fair":
+      return `${basePath}3400.wav`;
+
+    case "Sunny":
+      return `${basePath}3200.wav`;
+
+    case "Clear":
+      return `${basePath}3100.wav`;
+
+    case "Showers":
+      return `${basePath}2680.wav`;
+
+    case "Light Drizzle":
+      return `${basePath}901.wav`;
+
+    case "Drizzle":
+      return `${basePath}900.wav`;
+
+    case "Light Rain":
+      return `${basePath}1101.wav`;
+
+    case "Rain":
+    case "Rain Shower":
+      return `${basePath}1200.wav`;
+
+    case "Heavy Rain":
+      return `${basePath}1102.wav`;
+
+    case "Thunder":
+    case "Thunderstorm":
+      return `${basePath}400.wav`;
+
+    case "Heavy Thunder":
+    case "Heavy Thunderstorm":
+      return `${basePath}402.wav`;
+
+    case "Strong Thunder":
+    case "Strong Thunderstorm":
+      return `${basePath}422.wav`;
+
+    case "Light Snow":
+      return `${basePath}1601.wav`;
+
+    case "Snow":
+      return `${basePath}1600.wav`;
+
+    case "Heavy Snow":
+      return `${basePath}1402.wav`;
+
+    case "Partly Cloudy":
+      return `${basePath}2900.wav`;
+
+    case "Cloudy":
+      return `${basePath}2600.wav`;
+
+    case "Mostly Cloudy":
+      return `${basePath}2700.wav`;
+
+    case "Hazy":
+      return `${basePath}2100.wav`;
+
+    case "Smokey":
+      return `${basePath}2200.wav`;
+
+    case "Fog":
+    case "Foggy":
+    case "Fog/Wind":
+      return `${basePath}2000.wav`;
+
+    case "Tornado":
+      return `${basePath}423.wav`;
+
+    case "Funnel Cloud":
+      return `${basePath}428.wav`;
+  }
+}
+
