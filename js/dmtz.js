@@ -1,3 +1,4 @@
+var outArr = [];
 function checkStandbyMode() {
   if (!CONFIG.standbyMode) return;
   /* OH BOY WE'RE ENTERING SOME REALLY GOOD CODE NOW */
@@ -34,54 +35,54 @@ function getQueryVariable(variable) {
 
 function alertPriority(alerts) {
   let basePath = "assets/narrations/alerts/";
-  let outArr = [];
   alerts.forEach((elem, index) => {
-    switch (elem) {
-      case "Dense Fog Advisory":
+    console.log(elem)
+    switch (true) {
+      case elem.includes("Dense Fog Advisory"):
         outArr.push({ priority: 0, file: `${basePath}/FG_Y.wav` });
         break;
 
-      case "Winter Storm Watch":
+      case elem.includes("Winter Storm Watch"):
         outArr.push({ priority: 1, file: `${basePath}/WS_A.wav` });
         break;
 
-      case "Flood Watch":
+      case elem.includes("Flood Watch"):
         outArr.push({ priority: 2, file: `${basePath}/FA_A.wav` });
         break;
 
-      case "Hurricane Watch":
+      case elem.includes("Hurricane Watch"):
         outArr.push({ priority: 3, file: `${basePath}/HU_A.wav` });
         break;
 
-      case "Flash Flood Watch":
+      case elem.includes("Flash Flood Watch"):
         outArr.push({ priority: 4, file: `${basePath}/FF_A.wav` });
         break;
 
-      case "Severe Thunderstorm Watch":
+      case elem.includes("Severe Thunderstorm Watch"):
         outArr.push({ priority: 5, file: `${basePath}/SV_A.wav` });
         break;
 
-      case "Tornado Watch":
+      case elem.includes("Tornado Watch"):
         outArr.push({ priority: 6, file: `${basePath}/TO_A.wav` });
         break;
 
-      case "Winter Storm Warning":
+      case elem.includes("Winter Storm Warning"):
         outArr.push({ priority: 7, file: `${basePath}/WS_W.wav` });
         break;
 
-      case "Hurricane Warning":
+      case elem.includes("Hurricane Warning"):
         outArr.push({ priority: 8, file: `${basePath}/HU_W.wav` });
         break;
 
-      case "Severe Thunderstorm Warning":
+      case elem.includes("Severe Thunderstorm Warning"):
         outArr.push({ priority: 9, file: `${basePath}/0_SVW.wav` });
         break;
 
-      case "Flash Flood Warning":
+      case elem.includes("Flash Flood Warning"):
         outArr.push({ priority: 10, file: `${basePath}/0_FFW.wav` });
         break;
 
-      case "Tornado Warning":
+      case elem.includes("Tornado Warning"):
         outArr.push({ priority: 11, file: `${basePath}/TO_W.wav` });
         break;
       default:

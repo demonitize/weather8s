@@ -76,6 +76,12 @@ window.CONFIG = {
     "assets/music/new/14.mp3",
     "assets/music/new/15.mp3",
   ],
+  redMusicTracks: [
+    "assets/music/red/red_EOTS_1.wav",
+    "assets/music/red/red_EOTS_2.wav",
+    "assets/music/red/red_2018_1.wav",
+    // "assets/music/red/red_2017_1.wav",
+  ],
   mainBackgrounds: [
     /* Generic Backgrounds */
     "assets/backgrounds/TWC_Kmart.png",

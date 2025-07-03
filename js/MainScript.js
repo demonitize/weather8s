@@ -128,6 +128,7 @@ var voice = new Audio("assets/narrations/temps/0.wav");
 var bgd = "assets/backgrounds/TWC_Kmart.png";
 var bgdRed = "assets/backgrounds/SevereRed1.png";
 var bgdSubRed = "assets/backgrounds/SevereRed1.png";
+var redMode = false;
 
 window.onload = function () {
   CONFIG.addOption("zip-code", "ZIP Code", "75201");
@@ -176,6 +177,8 @@ function preLoadMusic() {
   /* Sets a random track to play */
   // musicV2.replaceTrack(0, CONFIG.musicTracks[selectRandomArray(CONFIG.musicTracks)]);
   music = new Audio(CONFIG.musicTracks[selectRandomArray(CONFIG.musicTracks)]);
+  musicRed = new Audio(CONFIG.redMusicTracks[selectRandomArray(CONFIG.redMusicTracks)]);
+
   bgd = CONFIG.mainBackgrounds[selectRandomArray(CONFIG.mainBackgrounds)];
   // bgdRed = CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.redModeBackgrounds)];
 
@@ -190,7 +193,8 @@ function preLoadMusic() {
     bgd == undefined ||
     bgdRed == undefined ||
     bgdSubRed == undefined ||
-    music == undefined
+    music == undefined ||
+    musicRed == undefined
   ) {
     console.log("Failed to select one or more random assets, rerolling");
     preLoadMusic();
@@ -252,19 +256,21 @@ function checkStormMusic() {
     currentCondition.toLowerCase().includes("storm") ||
     majorStorm.test(alerts)
   ) {
-    music = new Audio("assets/music/storm.wav");
+    redMode = true;
     getElement("background-image").style.backgroundImage = `url(${bgdRed})`;
 
     if (getQueryVariable("redTransition") != false) {
       window.obsstudio.setCurrentTransition(getQueryVariable("redTransition"))
     }
   } else if (minorStorm.test(alerts)) {
-    music = new Audio("assets/music/MinorStormAlert.wav");
+    redMode = true;
     getElement("background-image").style.backgroundImage = `url(${bgdSubRed})`;
 
     if (getQueryVariable("redTransition") != false) {
       window.obsstudio.setCurrentTransition(getQueryVariable("redTransition"))
     }
+  } else {
+    redMode = false;
   }
 }
 
@@ -272,6 +278,7 @@ function startAnimation() {
   setInitialPositionCurrentPage();
   // musicV2.setVolume(0.5);
   music.volume = 0.5;
+  musicRed.volume = 0.5;
   jingle.volume = 0.25;
   voice.volume = 0.5;
   jingle.play();
@@ -280,7 +287,7 @@ function startAnimation() {
 }
 
 function startMusic() {
-  music.play();
+  redMode ? musicRed.play() : music.play();
   // musicV2.play();
 }
 
@@ -379,10 +386,10 @@ function executePage(pageIndex, subPageIndex) {
     case "multiple-alerts-page":
       voice.src = alertPriority(alerts);
       voice.volume = 1;
-      music.volume = 0.25;
+      redMode ? musicRed.volume = 0.15 : music.volume = 0.25;
       voice.play();
       voice.onended = function () {
-        music.volume = 0.5;
+        redMode ? musicRed.volume = 0.5 : music.volume = 0.5;
       };
       console.log("Voiced alerts coming Soon™");
       break;
@@ -410,11 +417,11 @@ function executePage(pageIndex, subPageIndex) {
 
 function playOneShotVoice(file, voiceVol = 1) {
   voice.src = file;
-  music.volume = 0.25;
+  redMode ? musicRed.volume = 0.15 : music.volume = 0.25;
   voice.volume = voiceVol;
   voice.play();
   voice.onended = function () {
-    music.volume = 0.5;
+    redMode ? musicRed.volume = 0.5 : music.volume = 0.5;
   };
 }
 
@@ -425,7 +432,7 @@ function playCurrentConditionsVoice(
   volCond = 1
 ) {
   voice.src = `assets/narrations/CC_INTRO2.wav`;
-  music.volume = 0.25;
+  redMode ? musicRed.volume = 0.15 : music.volume = 0.25;
   voice.volume = volIntro;
   voice.play();
   voice.onended = function () {
@@ -441,10 +448,10 @@ function playCurrentConditionsVoice(
       voice.volume = volCond;
       voice.play();
       voice.onerror = function () {
-        music.volume = 0.5;
+        redMode ? musicRed.volume = 0.5 : music.volume = 0.5;
       };
       voice.onended = function () {
-        music.volume = 0.5;
+        redMode ? musicRed.volume = 0.5 : music.volume = 0.5;
       };
     };
   };
