@@ -186,6 +186,9 @@ function fetchRadarImages() {
   // scheduleTimeline();
   // return;
 
+
+  
+
   fetch(
     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${latitude}%2C${longitude}?unitGroup=us&key=${CONFIG.secrets.radarAPIKey}&contentType=json`,
     {

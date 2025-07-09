@@ -70,20 +70,28 @@ function alertPriority(alerts) {
         outArr.push({ priority: 7, file: `${basePath}/WS_W.wav` });
         break;
 
+      case elem.includes("Tropical Storm Watch"):
+        outArr.push({ priority: 8, file: `${basePath}/TR_A.wav` });
+        break;
+
+      case elem.includes("Tropical Storm Warning"):
+        outArr.push({ priority: 9, file: `${basePath}/TR_W.wav` });
+        break;
+
       case elem.includes("Hurricane Warning"):
-        outArr.push({ priority: 8, file: `${basePath}/HU_W.wav` });
+        outArr.push({ priority: 10, file: `${basePath}/HU_W.wav` });
         break;
 
       case elem.includes("Severe Thunderstorm Warning"):
-        outArr.push({ priority: 9, file: `${basePath}/0_SVW.wav` });
+        outArr.push({ priority: 11, file: `${basePath}/0_SVW.wav` });
         break;
 
       case elem.includes("Flash Flood Warning"):
-        outArr.push({ priority: 10, file: `${basePath}/0_FFW.wav` });
+        outArr.push({ priority: 12, file: `${basePath}/0_FFW.wav` });
         break;
 
       case elem.includes("Tornado Warning"):
-        outArr.push({ priority: 11, file: `${basePath}/TO_W.wav` });
+        outArr.push({ priority: 13, file: `${basePath}/TO_W.wav` });
         break;
       default:
         return false;
@@ -164,6 +172,11 @@ function underFuckedUpSkies(cond) {
 
     case "Thunder":
     case "Thunderstorm":
+    case "Thunderstorms in the Area":
+    case "Thunder in the area":
+    case "Light Rain with Thunder":
+    case "Heavy Rain with Thunder":
+    case "Thunder in the Vicinity":
       return `${basePath}400.wav`;
 
     case "Heavy Thunder":
@@ -173,6 +186,11 @@ function underFuckedUpSkies(cond) {
     case "Strong Thunder":
     case "Strong Thunderstorm":
       return `${basePath}422.wav`;
+
+    case "Strong Thunderstorm and Hail":
+    case "Strong Thunderstorm & Hail":
+    case "Strong Thunderstorm And Hail":
+      return `${basePath}1730.wav`;
 
     case "Light Snow":
       return `${basePath}1601.wav`;

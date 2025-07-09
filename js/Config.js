@@ -2,20 +2,16 @@ window.CONFIG = {
   crawl: `You're watching Kmart News Network! The Weather Channel is America's #1 Weather Network. Trusted. Reliable. Accurate.`,
   // crawl: `Funny Seasonal Message!`,
   greetings: [
-    "Here's Your<br>Local Weather",
     "Currently In<br>Our Area",
-    "Jim Cantore<br>My Beloved",
-    "LDL Sold<br>Separately",
-    "I Promise The Weather<br>Gets Better Tomorrow",
-    "Canada Isn't Real<br>Change My Mind",
+    "Two Storm Fronts<br>Walk Into A Millibar",
+    "Is Your Phone Technically<br>A Super Cell?",
+    "This Forecast Approved By Jackenstein!<br>🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃",
+    "Just Because It's Hot<br>Doesn't Mean It's HOTTOGO",
     "Not So<br>IntelliSTAR",
     "If It's Raining We Become<br>The Wetter Channel",
     "A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning<br>A Hurricane Warning",
     "OOPS!<br>All Weather.",
-    "Who Knew Forecasting<br>Was So Fun?",
     "Now Cueing<br>domestic/azul",
-    "Here's Our<br>Seven!",
-    "Powered By<br>Magic™",
     "Trans Rights<br>Are Human Rights",
     "This Forecast is<br>Skibidi Rizz Fanum Tax",
     "Look Ma!<br>I'm On TV!",
@@ -30,6 +26,14 @@ window.CONFIG = {
     "The Damn Weather<br>Machine Broke Again",
     "Please Stop Putting The<br>Weather Machine On Seven",
   ],
+  volume: {
+    voice: 1,
+    music: 0.5,
+    musicRed: 0.5,
+    musicDuck: 0.15,
+    musicRedDuck: 0.15,
+    jingle: 0.25
+  },
   language: "en-US", // Supported in TWC API
   countryCode: "US", // Supported in TWC API (for postal key)
   units: "e", // Supported in TWC API (e = English (imperial), m = Metric, h = Hybrid (UK)),
@@ -45,18 +49,18 @@ window.CONFIG = {
   },
   musicTracks: [
     /* Original Music */
-    "assets/music/WX_AMHQ_1.wav",
-    "assets/music/WX_AMHQ_2.wav",
-    "assets/music/WX_Tomorrows_Sunrise.wav",
+    // "assets/music/WX_AMHQ_1.wav",
+    // "assets/music/WX_AMHQ_2.wav",
+    // "assets/music/WX_Tomorrows_Sunrise.wav",
     "assets/music/WX_Branding_Short.wav",
-    "assets/music/WX_Clouds_May_Come.wav",
-    "assets/music/WX_Song_6.wav",
-    "assets/music/WX_Song_7.wav",
-    "assets/music/WX_Song_11.wav",
-    "assets/music/WX_Wake_Up_With_Al_1.wav",
-    "assets/music/WX_Wake_Up_With_Al_2.wav",
-    "assets/music/WX_Weekend_Recharge_1.wav",
-    "assets/music/WX_Weekend_Recharge_2.wav",
+    // "assets/music/WX_Clouds_May_Come.wav",
+    // "assets/music/WX_Song_6.wav",
+    // "assets/music/WX_Song_7.wav",
+    // "assets/music/WX_Song_11.wav",
+    // "assets/music/WX_Wake_Up_With_Al_1.wav",
+    // "assets/music/WX_Wake_Up_With_Al_2.wav",
+    // "assets/music/WX_Weekend_Recharge_1.wav",
+    // "assets/music/WX_Weekend_Recharge_2.wav",
 
     /* New Music */
 
@@ -80,7 +84,7 @@ window.CONFIG = {
     "assets/music/red/red_EOTS_1.wav",
     "assets/music/red/red_EOTS_2.wav",
     "assets/music/red/red_2018_1.wav",
-    // "assets/music/red/red_2017_1.wav",
+    "assets/music/red/red_winter_1.mp3",
   ],
   mainBackgrounds: [
     /* Generic Backgrounds */

@@ -4,7 +4,7 @@ const MORNING = [
     name: "Now",
     subpages: [
       { name: "current-page", duration: 10000 },
-      { name: "radar-page", duration: 5000 },
+      // { name: "radar-page", duration: 5000 },
     ],
   },
   {
@@ -23,7 +23,7 @@ const MORNING = [
   },
   {
     name: "Beyond",
-    subpages: [{ name: "7day-page", duration: 5000 }],
+    subpages: [{ name: "7day-page", duration: 10000 }],
   },
 ];
 const NIGHT = [
@@ -31,7 +31,7 @@ const NIGHT = [
     name: "Now",
     subpages: [
       { name: "current-page", duration: 10000 },
-      { name: "radar-page", duration: 5000 },
+      // { name: "radar-page", duration: 5000 },
     ],
   },
   {
@@ -50,7 +50,7 @@ const NIGHT = [
   },
   {
     name: "Beyond",
-    subpages: [{ name: "7day-page", duration: 5000 }],
+    subpages: [{ name: "7day-page", duration: 10000 }],
   },
 ];
 const SINGLE = [
@@ -59,7 +59,7 @@ const SINGLE = [
     name: "Now",
     subpages: [
       { name: "current-page", duration: 10000 },
-      { name: "radar-page", duration: 5000 },
+      // { name: "radar-page", duration: 5000 },
     ],
   },
   {
@@ -73,8 +73,8 @@ const SINGLE = [
     name: "Beyond",
     subpages: [
       { name: "tomorrow-page", duration: 10000 },
-      { name: "tomorrow-night-page", duration: 5000 },
-      { name: "7day-page", duration: 5000 },
+      { name: "tomorrow-night-page", duration: 8000 },
+      { name: "7day-page", duration: 7000 },
     ],
   },
 ];
@@ -87,7 +87,7 @@ const MULTIPLE = [
     name: "Now",
     subpages: [
       { name: "current-page", duration: 10000 },
-      { name: "radar-page", duration: 5000 },
+      // { name: "radar-page", duration: 5000 },
     ],
   },
   {
@@ -101,8 +101,8 @@ const MULTIPLE = [
     name: "Beyond",
     subpages: [
       { name: "tomorrow-page", duration: 10000 },
-      { name: "tomorrow-night-page", duration: 5000 },
-      { name: "7day-page", duration: 5000 },
+      { name: "tomorrow-night-page", duration: 8000 },
+      { name: "7day-page", duration: 7000 },
     ],
   },
 ];
@@ -127,6 +127,7 @@ var music = new Audio("assets/music/WX_Branding_Short.wav");
 var voice = new Audio("assets/narrations/temps/0.wav");
 var bgd = "assets/backgrounds/TWC_Kmart.png";
 var bgdRed = "assets/backgrounds/SevereRed1.png";
+var bgdHurricane = "assets/backgrounds/Hurricane_Central_i2_xD.png"
 var bgdSubRed = "assets/backgrounds/SevereRed1.png";
 var redMode = false;
 
@@ -182,7 +183,8 @@ function preLoadMusic() {
   bgd = CONFIG.mainBackgrounds[selectRandomArray(CONFIG.mainBackgrounds)];
   // bgdRed = CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.redModeBackgrounds)];
 
-  bgdRed = CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.hurricaneBackgrounds)];
+  bgdRed = CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.redModeBackgrounds)];
+  bgdHurricane = CONFIG.hurricaneBackgrounds[selectRandomArray(CONFIG.hurricaneBackgrounds)];
   // bgdRed = CONFIG.winterStormBackgrounds[selectRandomArray(CONFIG.winterStormBackgrounds)];
   bgdSubRed =
     CONFIG.subRedModeBackgrounds[
@@ -193,6 +195,7 @@ function preLoadMusic() {
     bgd == undefined ||
     bgdRed == undefined ||
     bgdSubRed == undefined ||
+    bgdHurricane == undefined ||
     music == undefined ||
     musicRed == undefined
   ) {
@@ -248,27 +251,34 @@ function setMainBackground() {
 }
 
 function checkStormMusic() {
+  let tropStorm = new RegExp(/Hurricane|Tropical Storm|Storm Surge/i);
   let majorStorm = new RegExp(
-    /Hurricane|Tornado|Flood|Tsunami|Evacuation|Blizzard/i
+    /Tornado|Flood|Tsunami|Evacuation|Blizzard/i
   );
   let minorStorm = new RegExp(/Test|Severe|Thunder|Cyclone|Heat|Freeze|Wind/i);
-  if (
-    currentCondition.toLowerCase().includes("storm") ||
-    majorStorm.test(alerts)
-  ) {
+  if (majorStorm.test(alerts)) { /* Major Warnings */
     redMode = true;
     getElement("background-image").style.backgroundImage = `url(${bgdRed})`;
 
     if (getQueryVariable("redTransition") != false) {
       window.obsstudio.setCurrentTransition(getQueryVariable("redTransition"))
     }
-  } else if (minorStorm.test(alerts)) {
+
+  } else if (minorStorm.test(alerts)) { /* Minor Warnings */
     redMode = true;
     getElement("background-image").style.backgroundImage = `url(${bgdSubRed})`;
 
     if (getQueryVariable("redTransition") != false) {
       window.obsstudio.setCurrentTransition(getQueryVariable("redTransition"))
     }
+
+  } else if (tropStorm.test(alerts)) { /* Tropical Storms */
+      redMode = true;
+      getElement("background-image").style.backgroundImage = `url(${hurricaneBackgrounds})`;
+
+      if (getQueryVariable("redTransition") != false) {
+        window.obsstudio.setCurrentTransition(getQueryVariable("redTransition"))
+      }
   } else {
     redMode = false;
   }
@@ -277,10 +287,10 @@ function checkStormMusic() {
 function startAnimation() {
   setInitialPositionCurrentPage();
   // musicV2.setVolume(0.5);
-  music.volume = 0.5;
-  musicRed.volume = 0.5;
-  jingle.volume = 0.25;
-  voice.volume = 0.5;
+  music.volume = CONFIG.volume.music;
+  musicRed.volume = CONFIG.volume.musicRed;
+  jingle.volume = CONFIG.volume.jingle;
+  voice.volume = CONFIG.volume.voice;
   jingle.play();
   setTimeout(startMusic, 5000);
   executeGreetingPage();
@@ -385,19 +395,19 @@ function executePage(pageIndex, subPageIndex) {
     case "single-alert-page":
     case "multiple-alerts-page":
       voice.src = alertPriority(alerts);
-      voice.volume = 1;
-      redMode ? musicRed.volume = 0.15 : music.volume = 0.25;
+      voice.volume = CONFIG.volume.voice;
+      redMode ? musicRed.volume = CONFIG.volume.musicRedDuck : music.volume = CONFIG.volume.musicDuck;
       voice.play();
       voice.onended = function () {
-        redMode ? musicRed.volume = 0.5 : music.volume = 0.5;
+        redMode ? musicRed.volume = CONFIG.volume.musicRed : music.volume = CONFIG.volume.music;
       };
-      console.log("Voiced alerts coming Soon™");
+      // console.log("Voiced alerts coming Soon™");
       break;
     case "current-page":
       setTimeout(loadCC, 1000);
       setTimeout(
-        playCurrentConditionsVoice(currentTemperature, 0.5, 1, 1),
-        3000
+        playCurrentConditionsVoice,
+        2500
       );
       setTimeout(scrollCC, currentSubPageDuration / 2);
       animateValue("cc-temperature-text", -50, currentTemperature, 2500, 1);
@@ -417,28 +427,34 @@ function executePage(pageIndex, subPageIndex) {
 
 function playOneShotVoice(file, voiceVol = 1) {
   voice.src = file;
-  redMode ? musicRed.volume = 0.15 : music.volume = 0.25;
+    redMode ? musicRed.volume = CONFIG.volume.musicRedDuck : music.volume = CONFIG.volume.musicDuck;
   voice.volume = voiceVol;
   voice.play();
   voice.onended = function () {
-    redMode ? musicRed.volume = 0.5 : music.volume = 0.5;
+    redMode ? musicRed.volume = CONFIG.volume.musicRed : music.volume = CONFIG.volume.music;
   };
 }
 
 function playCurrentConditionsVoice(
-  temp,
-  volIntro = 0.5,
-  volTemp = 1,
-  volCond = 1
+  temp = currentTemperature,
+  volIntro = CONFIG.volume.voice,
+  volTemp = CONFIG.volume.voice,
+  volCond = CONFIG.volume.voice
 ) {
   voice.src = `assets/narrations/CC_INTRO2.wav`;
-  redMode ? musicRed.volume = 0.15 : music.volume = 0.25;
+  redMode ? musicRed.volume = CONFIG.volume.musicRedDuck : music.volume = CONFIG.volume.musicDuck;
   voice.volume = volIntro;
   voice.play();
   voice.onended = function () {
-    if (temp < 0) {
+    if (temp >= 140) {
+      voice.src = `assets/narrations/temps/very_hot.wav`;
+    } else if (temp <= -100) {
+      voice.src = `assets/narrations/temps/very_cold.wav`;
+    } else if (temp < 0) {
       voice.src = `assets/narrations/temps/M${temp}.wav`;
-    } else {
+    } else if (temp == 0) {
+      voice.src = `assets/narrations/temps/Zeros.wav`
+    }else {
       voice.src = `assets/narrations/temps/${temp}.wav`;
     }
     voice.volume = volTemp;
@@ -448,10 +464,10 @@ function playCurrentConditionsVoice(
       voice.volume = volCond;
       voice.play();
       voice.onerror = function () {
-        redMode ? musicRed.volume = 0.5 : music.volume = 0.5;
+        redMode ? musicRed.volume = CONFIG.volume.musicRed : music.volume = CONFIG.volume.music;
       };
       voice.onended = function () {
-        redMode ? musicRed.volume = 0.5 : music.volume = 0.5;
+        redMode ? musicRed.volume = CONFIG.volume.musicRed : music.volume = CONFIG.volume.music;
       };
     };
   };

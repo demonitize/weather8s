@@ -71,3 +71,5 @@ var resetPosition = {
 function selectRandomArray(arr) {
   return Math.floor(Math.random() * arr.length);
 }
+
+setInterval(fetchCurrentWeather, 600000); /* Refresh Data every 10 minutes */
