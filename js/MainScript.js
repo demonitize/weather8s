@@ -205,7 +205,7 @@ function preLoadMusic() {
 
   if (getQueryVariable("prod") == 'true') {
     console.log("We are in Production mode")
-    if ((bgd || bgdRed || bgdSubRed || bgdHurricane || music || musicRed) == CONFIG.productionModeAssets) {
+    if (CONFIG.productionModeAssets.includes(bgd || bgdRed || bgdSubRed || bgdHurricane || music || musicRed)) {
       console.log("One or more assets were invalid as they are considered trolls. Rerolling!");
       preLoadMusic();
     }
