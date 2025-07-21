@@ -151,6 +151,11 @@ window.CONFIG = {
     "assets/backgrounds/WinterRedBG_1.png",
     // "https://i.imgur.com/gSNIkl0.jpeg",
   ],
+  productionModeAssets: [
+    "assets/backgrounds/FreakyChannelRed.png",
+    "assets/backgrounds/FreakyChannel.png",
+    "assets/backgrounds/TWC_Kmart.png"
+  ],
 
   // Config Functions (index.html settings manager)
   options: [],

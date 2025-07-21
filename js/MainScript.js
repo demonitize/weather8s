@@ -199,8 +199,16 @@ function preLoadMusic() {
     music == undefined ||
     musicRed == undefined
   ) {
-    console.log("Failed to select one or more random assets, rerolling");
+    console.log("Failed to select one or more random assets. Rerolling!");
     preLoadMusic();
+  }
+
+  if (getQueryVariable("prod") == true) {
+    console.log("We are in Production mode")
+    if ((bgd || bgdRed || bgdSubRed || bgdHurricane || music || musicRed) == CONFIG.productionModeAssets) {
+      console.log("One or more assets were invalid as they are considered trolls. Rerolling!");
+      preLoadMusic();
+    }
   }
 }
 
@@ -281,6 +289,9 @@ function checkStormMusic() {
       }
   } else {
     redMode = false;
+    if (getQueryVariable("prod") == true) {
+      getElement("crawl-text").innerText = "The Weather Channel is America's #1 Weather Network. Trusted. Reliable. Accurate.";
+    }
   }
 }
 
