@@ -125,7 +125,7 @@ window.CONFIG = {
       if (args.crawlText !== '') CONFIG.crawl = args.crawlText
       if (args.greetingText !== '') CONFIG.greetings[selectRandomArray(CONFIG.greetings)] = args.greetingText
       if (args.loop === 'y') CONFIG.loop = true
-      if (getQueryVariable(`zip`) != false) {
+      if (getQueryVariable(`zip`) != 'false') {
         zipCode = getQueryVariable(`zip`);
       } else if(/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(args['zip-code'])){
         zipCode = args['zip-code'];

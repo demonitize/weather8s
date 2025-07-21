@@ -203,7 +203,7 @@ function preLoadMusic() {
     preLoadMusic();
   }
 
-  if (getQueryVariable("prod") == true) {
+  if (getQueryVariable("prod") == 'true') {
     console.log("We are in Production mode")
     if ((bgd || bgdRed || bgdSubRed || bgdHurricane || music || musicRed) == CONFIG.productionModeAssets) {
       console.log("One or more assets were invalid as they are considered trolls. Rerolling!");
@@ -268,7 +268,7 @@ function checkStormMusic() {
     redMode = true;
     getElement("background-image").style.backgroundImage = `url(${bgdRed})`;
 
-    if (getQueryVariable("redTransition") != false) {
+    if (getQueryVariable("redTransition") != 'false') {
       window.obsstudio.setCurrentTransition(getQueryVariable("redTransition"))
     }
 
@@ -276,7 +276,7 @@ function checkStormMusic() {
     redMode = true;
     getElement("background-image").style.backgroundImage = `url(${bgdSubRed})`;
 
-    if (getQueryVariable("redTransition") != false) {
+    if (getQueryVariable("redTransition") != 'false') {
       window.obsstudio.setCurrentTransition(getQueryVariable("redTransition"))
     }
 
@@ -284,12 +284,12 @@ function checkStormMusic() {
       redMode = true;
       getElement("background-image").style.backgroundImage = `url(${hurricaneBackgrounds})`;
 
-      if (getQueryVariable("redTransition") != false) {
+      if (getQueryVariable("redTransition") != 'false') {
         window.obsstudio.setCurrentTransition(getQueryVariable("redTransition"))
       }
   } else {
     redMode = false;
-    if (getQueryVariable("prod") == true) {
+    if (getQueryVariable("prod") == 'true') {
       getElement("crawl-text").innerText = "The Weather Channel is America's #1 Weather Network. Trusted. Reliable. Accurate.";
     }
   }
@@ -619,7 +619,7 @@ function clearEnd() {
   // Reload the page after animation has completed
   // If looping is enabled, the sequence will start again
   // Otherwise, the zip code prompt will show again
-  if (getQueryVariable("endScene") != false) {
+  if (getQueryVariable("endScene") != 'false') {
     setTimeout(() => {
       window.obsstudio.setCurrentScene(getQueryVariable("endScene"));
       reloadPage();
