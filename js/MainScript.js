@@ -180,6 +180,7 @@ function preLoadMusic() {
   music = new Audio(CONFIG.musicTracks[selectRandomArray(CONFIG.musicTracks)]);
   musicRed = new Audio(CONFIG.redMusicTracks[selectRandomArray(CONFIG.redMusicTracks)]);
 
+
   bgd = CONFIG.mainBackgrounds[selectRandomArray(CONFIG.mainBackgrounds)];
   // bgdRed = CONFIG.redModeBackgrounds[selectRandomArray(CONFIG.redModeBackgrounds)];
 
@@ -204,7 +205,7 @@ function preLoadMusic() {
   }
 
   if (getQueryVariable("prod") == 'true') {
-    console.log("We are in Production mode")
+    console.log("We are in production mode!")
     if (CONFIG.productionModeAssets.includes(bgd || bgdRed || bgdSubRed || bgdHurricane || music || musicRed)) {
       console.log("One or more assets were invalid as they are considered trolls. Rerolling!");
       preLoadMusic();
@@ -263,7 +264,7 @@ function checkStormMusic() {
   let majorStorm = new RegExp(
     /Tornado|Flood|Tsunami|Evacuation|Blizzard/i
   );
-  let minorStorm = new RegExp(/Test|Severe|Thunder|Cyclone|Heat|Freeze|Wind/i);
+  let minorStorm = new RegExp(/Test|Severe|Thunder|Cyclone|Wind/i);
   if (majorStorm.test(alerts)) { /* Major Warnings */
     redMode = true;
     getElement("background-image").style.backgroundImage = `url(${bgdRed})`;
@@ -282,7 +283,7 @@ function checkStormMusic() {
 
   } else if (tropStorm.test(alerts)) { /* Tropical Storms */
       redMode = true;
-      getElement("background-image").style.backgroundImage = `url(${hurricaneBackgrounds})`;
+      getElement("background-image").style.backgroundImage = `url(${bgdHurricane})`;
 
       if (getQueryVariable("redTransition") != 'false') {
         window.obsstudio.setCurrentTransition(getQueryVariable("redTransition"))
