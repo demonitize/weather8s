@@ -269,7 +269,7 @@ function checkStormMusic() {
     redMode = true;
     getElement("background-image").style.backgroundImage = `url(${bgdRed})`;
 
-    if (getQueryVariable("redTransition") != 'false') {
+    if (getQueryVariable("redTransition") != false) {
       window.obsstudio.setCurrentTransition(getQueryVariable("redTransition"))
     }
 
@@ -277,7 +277,7 @@ function checkStormMusic() {
     redMode = true;
     getElement("background-image").style.backgroundImage = `url(${bgdSubRed})`;
 
-    if (getQueryVariable("redTransition") != 'false') {
+    if (getQueryVariable("redTransition") != false) {
       window.obsstudio.setCurrentTransition(getQueryVariable("redTransition"))
     }
 
@@ -285,7 +285,7 @@ function checkStormMusic() {
       redMode = true;
       getElement("background-image").style.backgroundImage = `url(${bgdHurricane})`;
 
-      if (getQueryVariable("redTransition") != 'false') {
+      if (getQueryVariable("redTransition") != false) {
         window.obsstudio.setCurrentTransition(getQueryVariable("redTransition"))
       }
   } else {

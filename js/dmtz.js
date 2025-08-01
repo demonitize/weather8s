@@ -152,6 +152,8 @@ function underFuckedUpSkies(cond) {
       return `${basePath}3100.wav`;
 
     case "Showers":
+    case "Showers in the area":
+    case "Showers in the vicinity":
       return `${basePath}2680.wav`;
 
     case "Light Drizzle":
@@ -165,6 +167,7 @@ function underFuckedUpSkies(cond) {
 
     case "Rain":
     case "Rain Shower":
+    case "Rain/Wind":
       return `${basePath}1200.wav`;
 
     case "Heavy Rain":
